@@ -1,0 +1,3658 @@
+/* static/css/style.css (CLEAN — no duplicates) */
+
+:root {
+  --bg: #050816;
+  --bg-alt: #0b1020;
+  --card-bg: #101827;
+  --border-subtle: rgba(148, 163, 184, 0.22);
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --accent: #0ea5e9;
+  --accent-soft: rgba(14, 165, 233, 0.1);
+
+  --radius-lg: 1.25rem;
+  --radius-md: 0.9rem;
+
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.5);
+  --shadow-subtle: 0 12px 35px rgba(15, 23, 42, 0.65);
+
+  --transition-fast: 0.18s ease-out;
+  --transition-med: 0.28s ease-out;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 0 0, #111827, #020617 60%);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Slightly tighter overall to reduce “odd big gaps” */
+.section { padding: 5.5rem 0; }
+
+.section-alt {
+  padding: 5.5rem 0;
+  background: radial-gradient(circle at 100% 0, #111827 0, #020617 55%);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.0rem;
+}
+
+.section-header h2 {
+  font-size: clamp(2.05rem, 2.1vw + 1rem, 2.9rem);
+  letter-spacing: 0.02em;
+  margin: 0 0 0.6rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.98),
+    rgba(15, 23, 42, 0.84)
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 0, #22d3ee, #0ea5e9 40%, #0369a1 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #0b1220;
+  box-shadow: var(--shadow-subtle);
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Nav */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  position: relative;
+  padding-bottom: 0.3rem;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #22d3ee, #0ea5e9);
+  transition: width var(--transition-fast);
+}
+
+.site-nav a:hover { color: #e5e7eb; }
+.site-nav a:hover::after { width: 100%; }
+
+/* Header actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+#themeToggle {
+  border: none;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+#themeToggle:hover {
+  background: rgba(30, 64, 175, 0.9);
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.95);
+  padding: 5px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+  color: #020617;
+  font-weight: 600;
+  box-shadow: 0 14px 40px rgba(8, 47, 73, 0.65);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 48px rgba(8, 47, 73, 0.85);
+}
+
+.btn-outline {
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+}
+
+.btn-outline:hover { border-color: rgba(248, 250, 252, 0.9); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: #e5e7eb;
+}
+
+.btn-ghost:hover { border-color: rgba(248, 250, 252, 0.9); }
+
+/* GitHub button (professional site accent) */
+.btn-github {
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+  color: #020617;
+  font-weight: 700;
+  box-shadow: 0 14px 40px rgba(8, 47, 73, 0.55);
+  border: none;
+}
+
+.btn-github:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 48px rgba(8, 47, 73, 0.75);
+}
+
+.btn-collapsible {
+  padding: 0.42rem 0.95rem;
+  font-size: 0.84rem;
+}
+
+/* HERO (slightly smaller / balanced at 100% view) */
+.hero { padding: 5.2rem 0 4.2rem; }
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+  gap: 3.0rem;
+  align-items: center;
+}
+
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.15rem, 3.1vw + 1rem, 3.25rem);
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+.hero h1 .accent { color: var(--accent); }
+
+.hero-body {
+  color: var(--text-muted);
+  max-width: 42rem;
+  margin-bottom: 1.6rem;
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.0rem;
+}
+
+.hero-photo-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), rgba(15, 23, 42, 0.98));
+  padding: 0.7rem;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-photo {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0.1rem auto 0.35rem;
+  height: auto;
+  border-radius: calc(var(--radius-lg) - 0.25rem);
+  object-fit: cover;
+}
+
+.hero-card {
+  padding: 0.9rem 1.05rem;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.98));
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: var(--shadow-subtle);
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.hero-value { margin: 0; font-size: 0.95rem; }
+
+.hero-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.hero-links a {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.hero-links a:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Typewriter helper (optional element) */
+.typewriter-caret::after{
+  content: "▍";
+  display: inline-block;
+  margin-left: 0.12rem;
+  opacity: 0.85;
+  animation: caretBlink 1s infinite;
+}
+@keyframes caretBlink {
+  0%, 45% { opacity: 0.85; }
+  50%, 100% { opacity: 0.1; }
+}
+
+/* About */
+.about-inner { display: flex; flex-direction: column; gap: 2.6rem; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+  gap: 3.0rem;
+}
+
+.about-grid h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.about-grid p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.9;
+}
+
+.about-facts { display: grid; gap: 1.2rem; }
+
+.fact {
+  padding: 1rem 1.1rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.fact-label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.fact-value { display: block; margin-top: 0.2rem; }
+
+/* Extra reusable “block” style (for your Core Focus / Strengths / Location style anywhere) */
+.info-block{
+  padding: 1rem 1.1rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: var(--shadow-subtle);
+}
+.info-block .info-label{
+  display:block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.info-block .info-value{
+  display:block;
+  color: var(--text-main);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Generic cards */
+.card {
+  padding: 1.3rem 1.2rem;
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: var(--shadow-subtle);
+}
+
+.card h3 { margin: 0 0 0.8rem; }
+.card ul { margin: 0; padding-left: 1.1rem; }
+.card li { font-size: 0.96rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.2rem;
+}
+
+.skills-card { display: flex; flex-direction: column; gap: 1rem; }
+
+.skills-card h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.skill-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.52rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.42);
+  background: rgba(15, 23, 42, 0.92);
+  font-size: 0.92rem;
+  line-height: 1.15;
+  color: #cbd5e1;
+  white-space: nowrap;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.skill-chip i {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  color: #e5e7eb;
+  
+}
+
+.skill-chip--primary {
+  border-color: rgba(56, 189, 248, 0.75);
+  background: rgba(14, 165, 233, 0.08);
+  color: #e0f2fe;
+  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.18);
+}
+
+.skill-chip--primary i { color: #e0f2fe; }
+
+.skill-chip:hover {
+  background: rgba(15, 23, 42, 1);
+  border-color: var(--accent);
+  color: #f9fafb;
+  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Collapsible (generic) */
+.collapsible { margin-top: 0.25rem; }
+
+.collapsible-content {
+  position: relative;
+  overflow: hidden;
+  max-height: 7.5rem;
+  transition: max-height 0.25s ease-out;
+}
+
+.collapsible[data-collapsed="false"] .collapsible-content { max-height: 9999px; }
+
+.collapsible[data-collapsed="true"] .collapsible-content::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2.5rem;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0), rgba(15, 23, 42, 0.98));
+  pointer-events: none;
+}
+
+/* Education */
+.education-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.6fr);
+  gap: 2.5rem;
+}
+
+.edu-degrees { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.edu-item {
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: flex-start;
+}
+
+.edu-main h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.edu-school { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+.edu-meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.edu-highlight {
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.16);
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  color: #e0f2fe;
+  font-weight: 600;
+}
+
+.edu-year { color: var(--text-muted); }
+
+.edu-side { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.edu-course-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.edu-course-columns h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.edu-course-columns li { font-size: 0.95rem; line-height: 1.8; }
+
+.edu-cert-list { list-style: none; padding-left: 0; margin: 0; }
+.edu-cert-list li { font-size: 0.96rem; color: var(--text-muted); margin-bottom: 0.45rem; line-height: 1.85; }
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+  gap: 2.5rem;
+}
+
+.contact-grid p {
+  margin-top: 0;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+.contact-actions { display: flex; flex-direction: column; gap: 0.9rem; align-items: flex-start; }
+.contact-buttons { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.contact-meta span { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 1rem 0 1.5rem;
+  background: rgba(3, 7, 18, 0.96);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Resume Modal */
+.resume-modal { position: fixed; inset: 0; display: none; z-index: 200; }
+.resume-modal.open { display: block; }
+
+.resume-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.resume-dialog {
+  position: relative;
+  margin: 3vh auto;
+  max-width: 1100px;
+  height: 94vh;
+  border-radius: 1.5rem;
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.resume-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.4rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
+}
+
+.resume-tabs { display: flex; gap: 0.5rem; }
+
+.resume-tab {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.95rem;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.resume-tab.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: #e0f2fe;
+  box-shadow: 0 0 0 1px rgba(8, 47, 73, 0.4);
+}
+
+.resume-close {
+  border: none;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.resume-dialog-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
+  gap: 0;
+  padding: 1rem 1.4rem 1.2rem;
+}
+
+.resume-info { padding-right: 1.2rem; }
+.resume-info h3 { margin-top: 0; margin-bottom: 0.5rem; }
+
+.resume-info p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.resume-frame-container {
+  border-radius: 1rem;
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#resumeFrame { border: none; width: 100%; flex: 1; }
+
+.resume-fallback {
+  margin: 0;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.resume-fallback a { color: var(--accent); }
+
+/* Scroll animations */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s var(--transition-med), transform 0.6s var(--transition-med);
+}
+
+[data-animate="left"] { transform: translateX(-32px); }
+[data-animate="right"] { transform: translateX(32px); }
+
+.animate-in {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
+/* Light mode */
+body.light-mode {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+body.light-mode .section-alt { background: #e5e7eb; }
+
+body.light-mode .site-header {
+  background: rgba(248, 250, 252, 0.98);
+  border-bottom-color: rgba(148, 163, 184, 0.3);
+}
+
+body.light-mode .hero-card,
+body.light-mode .card,
+body.light-mode .fact,
+body.light-mode .edu-item,
+body.light-mode .hero-links a,
+body.light-mode .info-block,
+body.light-mode #projects .project-card--tab {
+  background: #ffffff;
+  border-color: rgba(148, 163, 184, 0.35);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+body.light-mode .section-header p,
+body.light-mode p,
+body.light-mode .edu-cert-list li {
+  color: #4b5563;
+}
+
+body.light-mode #projects .project-summary { color: #111827; }
+body.light-mode #projects .tech-chip {
+  background: #f9fafb;
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #111827;
+}
+body.light-mode #projects .project-badge {
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  color: #0369a1;
+}
+body.light-mode #projects .details-list { color: #4b5563; }
+body.light-mode #projects .dkey { color: #111827; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr); }
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .education-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .skills-grid { grid-template-columns: minmax(0, 1fr); }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: 5rem; }
+  .hero-photo { max-width: 260px; }
+  .section, .section-alt { padding: 4.6rem 0; 
+    
+  
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.75rem 1.5rem 0.9rem;
+    background: rgba(15, 23, 42, 0.98);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transition-med), opacity var(--transition-med);
+  }
+
+  .site-nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-toggle { display: flex; }
+
+  .resume-dialog {
+    margin: 4vh auto;
+    max-width: 96%;
+    height: 92vh;
+    border-radius: 1.2rem;
+  }
+
+  .resume-dialog-body {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.8rem;
+  }
+
+  .resume-info { padding-right: 0; }
+
+  .skill-chip {
+    font-size: 0.9rem;
+    padding: 0.48rem 0.95rem;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.05rem; }
+  .hero-body { font-size: 1rem; }
+  .header-inner { padding-inline: 0.3rem; }
+}
+
+/* ================================
+   PROJECTS (Clean Tabs V3) — FINAL
+   ================================ */
+
+/* Filters */
+#projects .project-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap: .85rem;
+  justify-content:center;
+  margin-bottom: 2.4rem;
+}
+
+#projects .filter-btn{
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.85);
+  color: #cbd5e1;
+  padding: 0.52rem 1.15rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+#projects .filter-btn.active{
+  background: rgba(14, 165, 233, 0.14);
+  border-color: rgba(14, 165, 233, 0.95);
+  color: #e0f2fe;
+  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.18);
+}
+
+#projects .filter-btn:hover:not(.active){
+  border-color: rgba(148, 163, 184, 0.85);
+  color: #f1f5f9;
+}
+
+/* Grid */
+#projects .projects-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.1rem;
+  align-items: stretch;
+}
+
+@media (max-width: 900px){
+  #projects .projects-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card */
+#projects .project-card--tab{
+  padding: 1.35rem 1.45rem 1.25rem;
+  border-radius: 1.6rem;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Title */
+#projects .project-head{ margin-bottom: 0.95rem; }
+#projects .project-title{
+  margin: 0;
+  font-size: 1.24rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+/* Media (make outer boundary consistent + “framed” look) */
+#projects .project-media{
+  display:block;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.12), rgba(2, 6, 23, 0.80));
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.05),
+    0 14px 36px rgba(0,0,0,0.25);
+  padding: 0.65rem;
+  overflow: hidden;
+}
+
+/* lock frame shape */
+#projects .project-media img{
+  display:block;
+  width:100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0.95rem;
+}
+
+/* Tags under image */
+#projects .project-badges{
+  margin-top: 0.85rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap: .55rem;
+}
+
+#projects .project-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: .34rem .85rem;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.10);
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  color: #e0f2fe;
+  font-size: .84rem;
+  white-space: nowrap;
+}
+
+/* Minimal tech chips */
+#projects .project-tech{
+  margin-top: .65rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap: .55rem;
+}
+
+#projects .tech-chip{
+  display:inline-flex;
+  align-items:center;
+  gap: .5rem;
+  padding: .42rem .9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.75);
+  color: #e5e7eb;
+  font-size: .90rem;
+  line-height: 1.1;
+}
+
+#projects .tech-chip i{ opacity: .95; }
+
+/* Summary (no truncation) */
+#projects .project-summary{
+  margin: .95rem 0 0;
+  color: #f3f4f6;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+/* Actions pinned to bottom */
+#projects .project-actions{
+  margin-top: auto;
+  padding-top: 1rem;
+  display:flex;
+  flex-direction: wrap;
+  gap: .65rem;
+  align-items:center;
+}
+
+#projects .project-buttons{
+  display:flex;
+  flex-wrap:nowrap;
+  gap: .75rem;
+  align-items:center;
+  min-width: 0;
+}
+
+/* Project buttons */
+#projects .btn-project-primary{
+  border-radius: 999px;
+  padding: .62rem 1.15rem;
+  font-size: .95rem;
+  font-weight: 700;
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.92), rgba(14, 165, 233, 0.92));
+  color: #06111f;
+  box-shadow: 0 12px 30px rgba(8, 47, 73, 0.40);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+}
+
+#projects .btn-project-primary:hover{ transform: translateY(-1px); }
+
+#projects .btn-project-ghost{
+  border-radius: 999px;
+  padding: .62rem 1.15rem;
+  font-size: .95rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.72);
+  color: #e5e7eb;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+}
+
+#projects .btn-project-ghost:hover{ border-color: rgba(248, 250, 252, 0.85); }
+
+/* Toggle (single label + chevron) */
+#projects .btn-project-toggle{
+  border-radius: 999px;
+  padding: .48rem .95rem;
+  font-size: .90rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: transparent;
+  color: #e5e7eb;
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  cursor:pointer;
+  margin-left: auto;
+}
+
+#projects .btn-project-toggle i{
+  font-size: .88rem;
+  transition: transform .18s ease-out;
+}
+
+#projects .project-card.is-open .btn-project-toggle i{ transform: rotate(180deg); }
+
+/* Details: hidden until click */
+#projects .project-details{
+  margin-top: .65rem;
+  flex-basis: 100%;
+  width: 100%;
+  margin-top: .35rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .18s ease-out, height .22s ease-out, padding-top .18s ease-out;
+}
+
+/* Equal expanded height across cards (scroll if needed) */
+#projects .project-card.is-open .project-details{
+  height: 230px;
+  opacity: 1;
+  padding-top: .85rem;
+  overflow: auto;
+}
+
+#projects .details-list{
+  margin: 0;
+  padding-left: 1.15rem;
+  color: #9ca3af;
+  font-size: .95rem;
+  line-height: 1.85;
+}
+
+#projects .details-list li{ margin-bottom: .55rem; }
+
+#projects .dkey{
+  color: #e5e7eb;
+  font-weight: 700;
+}
+
+/* =========================================================
+   FIX: Projects "Show details" should collapse by default
+   + keep action row aligned (Repo/Company left, toggle right)
+   Paste at END of style.css
+   ========================================================= */
+
+   #projects .project-actions{
+    /* force correct layout regardless of earlier rules */
+    display: flex;
+    flex-direction: row;     /* ✅ explicit */
+    flex-wrap: wrap;         /* ✅ wrap (details goes next line) */
+    align-items: center;
+    gap: .75rem;
+  }
+  
+  #projects .project-buttons{
+    display: flex;
+    flex-wrap: nowrap;       /* keep repo + company on one line on desktop */
+    gap: .75rem;
+    align-items: center;
+    min-width: 0;
+  }
+  
+  #projects .btn-project-toggle{
+    margin-left: auto;       /* toggle sticks to the right */
+  }
+  
+  /* IMPORTANT: remove the "flex-basis: 100%" height-reserve bug in column cases */
+  #projects .project-details{
+    flex: 0 0 100%;          /* full width on the wrapped line */
+    flex-basis: auto !important; /* prevents column-height reservation */
+    width: 100%;
+  
+    /* collapsed state */
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: 0;
+    margin-top: .35rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+    transition:
+      opacity .18s ease-out,
+      max-height .22s ease-out,
+      padding-top .18s ease-out;
+  }
+  
+  /* expanded state (keeps consistent height across cards) */
+  #projects .project-card.is-open .project-details{
+    max-height: 230px;
+    height: auto;            /* allow content, max-height controls the box */
+    opacity: 1;
+    padding-top: .85rem;
+    overflow: auto;
+  }
+  
+  /* Mobile: allow the left buttons to wrap if needed */
+  @media (max-width: 768px){
+    #projects .project-buttons{ flex-wrap: wrap; }
+    #projects .btn-project-toggle{ margin-left: 0; }
+  }
+  
+  /* =========================================================
+   Projects layout fix:
+   Consider both cards same height, but keep buttons in place
+   (don’t push project-actions to the bottom).
+   Paste at END of style.css
+   ========================================================= */
+
+#projects .project-actions{
+  margin-top: 1rem !important;  /* override margin-top:auto */
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+}
+
+#projects .project-buttons{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: .75rem;
+  align-items: center;
+}
+
+#projects .btn-project-toggle{
+  margin-left: auto;
+}
+
+/* Details collapse/expand (keep your behavior) */
+#projects .project-details{
+  flex: 0 0 100%;
+  width: 100%;
+  height: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding-top: 0;
+  margin-top: .35rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  transition: opacity .18s ease-out, max-height .22s ease-out, padding-top .18s ease-out;
+}
+
+#projects .project-card.is-open .project-details{
+  max-height: 230px;
+  height: auto;
+  opacity: 1;
+  padding-top: .85rem;
+  overflow: auto;
+}
+
+/* =========================================================
+   Projects: expand details fully (NO scroll), keep cards in sync
+   Paste at END of style.css
+   ========================================================= */
+
+/* Keep both cards in the row the same height (sync) */
+#projects .projects-grid{
+  align-items: stretch; /* already in your CSS, harmless repeat */
+}
+
+/* Make sure card stretches to row height */
+#projects .project-card--tab{
+  height: 100%;
+}
+
+/* Collapsed state */
+#projects .project-details{
+  flex: 0 0 100%;
+  width: 100%;
+
+  max-height: 0;
+  overflow: hidden;      /* hide when collapsed */
+  opacity: 0;
+
+  padding-top: 0;
+  margin-top: .35rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+
+  transition:
+    max-height .28s ease-out,
+    opacity .18s ease-out,
+    padding-top .18s ease-out;
+}
+
+/* Expanded state: grow to content (no internal scroll) */
+#projects .project-card.is-open .project-details{
+  max-height: 2000px;    /* big enough for your content; increase if needed */
+  overflow: hidden;      /* keeps layout clean; NO scrollbar */
+  opacity: 1;
+  padding-top: .85rem;
+}
+
+/* =========================================================
+   GLOBAL SCALE (make 100% feel like ~90%)
+   Paste at END of style.css
+   ========================================================= */
+
+/* Set this to 0.92–0.95 for "balanced", NOT too small */
+:root{
+  --site-scale: 0.88;  /* ✅ try 0.93 first (feels like ~90% zoom) */
+}
+
+/* Chrome/Edge/Brave/Safari */
+@supports (zoom: 1) {
+  body{
+    zoom: var(--site-scale);
+  }
+}
+
+/* Firefox fallback (not perfect but keeps it usable) */
+@supports not (zoom: 1) {
+  body{
+    transform: scale(var(--site-scale));
+    transform-origin: top left;
+    width: calc(100% / var(--site-scale));
+  }
+}
+
+/* ===== Hero Dynamic Intro (typed rotator) ===== */
+.hero-title{
+  margin: 0 0 1rem;
+  line-height: 1.15;
+}
+
+.hero-hello{
+  display:block;
+  font-size: clamp(1.05rem, 0.65vw + 0.9rem, 1.35rem);
+  color: rgba(229, 231, 235, 0.88);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.hero-name{
+  display:block;
+  font-size: clamp(2.35rem, 3.25vw + 1rem, 3.55rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.55rem;
+}
+
+.hero-rotator{
+  display:block;
+  font-size: clamp(1.35rem, 1.55vw + 0.9rem, 2.05rem);
+  font-weight: 650;
+  color: #e5e7eb;
+}
+
+.hero-rotator .accent{
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* nicer caret (you already have typewriter-caret; this upgrades it a bit) */
+.typewriter-caret::after{
+  content: "▍";
+  display:inline-block;
+  margin-left: 0.15rem;
+  opacity: 0.9;
+  transform: translateY(-0.02em);
+  animation: caretBlink 1s infinite;
+}
+
+@keyframes caretBlink {
+  0%, 45% { opacity: 0.9; }
+  50%, 100% { opacity: 0.15; }
+}
+
+/* About (right-side) spacing polish: label -> chips consistent */
+.about-facts .fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;              /* consistent spacing inside each box */
+}
+
+.about-facts .fact-label {
+  margin: 0;                 /* remove default span spacing weirdness */
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.about-facts .skill-chip-group {
+  margin-top: 0;             /* ensure no extra top gap */
+  gap: 0.6rem;               /* chip-to-chip spacing (rows + columns) */
+}
+
+
+/* Company logo inside project buttons */
+#projects .btn-company{
+  gap: .55rem;                 /* space between logo + text */
+  padding: .62rem 1.05rem;     /* keeps pill balanced */
+}
+
+#projects .company-logo{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  /* optional: subtle backing so transparent logos look clean */
+  background: rgba(15, 23, 42, 0.55);
+  padding: 2px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* ===== Project title logo (next to title) ===== */
+#projects .project-title{
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+/* Small logo container so all logos look consistent (even JPG with white bg) */
+#projects .title-logo{
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+
+  /* subtle backing so transparent / JPG logos look premium */
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.16);
+}
+
+/* actual logo image */
+#projects .title-logo img{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+}
+
+/* Slightly scale down on very small screens */
+@media (max-width: 420px){
+  #projects .title-logo{ width: 24px; height: 24px; border-radius: 9px; }
+  #projects .title-logo img{ width: 16px; height: 16px; }
+}
+
+/* Company logo inside project buttons */
+#projects .btn-company{
+  gap: .55rem;                 /* space between logo + text */
+  padding: .62rem 1.05rem;     /* keeps pill balanced */
+}
+
+#projects .company-logo{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  /* optional: subtle backing so transparent logos look clean */
+  background: rgba(15, 23, 42, 0.55);
+  padding: 2px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* --- Company button: same feel as GitHub button --- */
+#projects .btn-company{
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .62rem 1.05rem;
+  border-radius: 999px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Fixed-size logo badge so it never “disappears” */
+#projects .btn-company .company-badge{
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* The key: contrast backing so logos are always visible */
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+/* Make the logo fill the badge cleanly */
+#projects .btn-company .company-badge img{
+  width: 100%;
+  height: 100%;
+
+  /* Most “wordmark” images are wide; cover crops nicely to the emblem */
+  object-fit: cover;
+  object-position: left center; /* shows the left-side mark (Synaptics drop, Envipco icon) */
+  display: block;
+}
+
+/* Company name text */
+#projects .btn-company .company-name{
+  display: inline-block;
+}
+
+/* --- Optional: subtle per-company theming (border/glow only) --- */
+#projects .btn-company--synaptics{
+  border-color: rgba(59,130,246,0.45);
+}
+#projects .btn-company--synaptics:hover{
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+#projects .btn-company--envipco{
+  border-color: rgba(34,197,94,0.35);
+}
+#projects .btn-company--envipco:hover{
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.14);
+}
+
+#projects .btn-company--atlas{
+  border-color: rgba(20,184,166,0.35);
+}
+#projects .btn-company--atlas:hover{
+  box-shadow: 0 0 0 3px rgba(20,184,166,0.14);
+}
+
+/* =========================================================
+   Projects: equal-size action buttons + bigger company logo
+   Paste at END of style.css
+   ========================================================= */
+
+   #projects .project-buttons{
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+  }
+  
+  /* Force equal height + consistent padding for ALL project action buttons */
+  #projects .project-buttons .btn{
+    min-height: 46px;              /* ✅ same button height */
+    padding: .62rem 1.15rem;       /* ✅ same padding */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    line-height: 1;
+  }
+  
+  /* Make the GitHub + ghost buttons visually consistent */
+  #projects .btn-project-primary,
+  #projects .btn-project-ghost{
+    font-size: .95rem;
+  }
+  
+  /* If you're using FA icons, make them a bit bigger too */
+  #projects .project-buttons .btn i{
+    font-size: 1.05rem;
+  }
+  
+  /* Company button when using an image logo */
+  #projects .btn-company{
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  
+  /* Bigger logo (works for PNG/SVG) */
+  #projects .btn-company .company-logo{
+    width: 22px;                   /* ✅ bigger logo */
+    height: 22px;
+    object-fit: contain;
+    display: inline-block;
+  }
+  
+  /* Optional: slightly tighter text so it matches the GitHub button */
+  #projects .btn-company span{
+    transform: translateY(0.5px);
+  }
+
+  
+  /* ===== Projects: Company button (logo + name) ===== */
+#projects .btn-company{
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  min-height: 44px;            /* match GitHub button height */
+  padding: .62rem 1.15rem;     /* match primary padding */
+}
+
+/* also force primary to same height */
+#projects .btn-project-primary{
+  min-height: 44px;
+}
+
+/* logo bubble */
+#projects .company-badge{
+  width: 38px;                 /* slightly bigger */
+  height: 38px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  flex: 0 0 auto;
+}
+
+/* logo image */
+#projects .company-badge img{
+  width: 18px;                 /* slightly bigger */
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
+
+/* optional: keep text consistent */
+#projects .company-name{
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+
+/* =========================================================
+   Projects: Title row with company pill (replaces "(Company)")
+   Paste at END of style.css
+   ========================================================= */
+
+   #projects .project-head-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .85rem;
+    flex-wrap: wrap; /* allows company pill to go below title on small screens */
+  }
+  
+  /* Your CSS earlier set .project-title to display:flex for a title logo.
+     We override so the title behaves normally in this new header row. */
+  #projects .project-title{
+    display: block !important;
+    margin: 0;
+    flex: 1 1 360px; /* gives the title room; pill stays to the right */
+    min-width: 0;
+  }
+  
+  /* Keep the company pill aligned right on desktop */
+  #projects .project-head-top .btn-company{
+    margin-left: auto;
+  }
+  
+  /* On very small screens: put the company pill below title full-width */
+  @media (max-width: 480px){
+    #projects .project-head-top .btn-company{
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* --- Fix: keep company pill aligned on the same row (desktop) --- */
+#projects .project-head-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .85rem;
+  flex-wrap: nowrap;            /* ✅ do NOT wrap on desktop */
+}
+
+#projects .project-title{
+  flex: 1 1 auto;               /* ✅ let title shrink/grow naturally */
+  min-width: 0;                 /* ✅ allows shrinking without forcing wrap */
+}
+
+#projects .project-head-top .btn-company{
+  flex: 0 0 auto;               /* ✅ pill keeps its size */
+  margin-left: auto;            /* keep it on the right */
+}
+
+/* Allow wrap only on small screens */
+@media (max-width: 640px){
+  #projects .project-head-top{ flex-wrap: wrap; }
+  #projects .project-head-top .btn-company{
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   Projects: Collapsed Preview + Expand Overlay (UI layer)
+   UPDATED — replaces your old block
+   Paste at END of style.css
+   ========================================================= */
+
+#projects.projects-collapsed .project-filters{
+  max-height: 0;
+  opacity: 0;
+  margin: 0 !important;
+  pointer-events: none;
+  overflow: hidden;
+  transition: max-height .25s ease, opacity .22s ease;
+}
+
+#projects.projects-expanded .project-filters{
+  max-height: 200px;
+  opacity: 1;
+  pointer-events: auto;
+  margin-bottom: 2.4rem;
+}
+
+/* container */
+#projects .projects-ui{
+  position: relative;
+}
+
+/* Clip wrapper that animates open/close smoothly */
+#projects .projects-grid-clip{
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.75rem;
+  transition: max-height .38s cubic-bezier(.2,.9,.2,1);
+  will-change: max-height;
+}
+
+/* Collapsed / Expanded heights are set by JS via CSS variables */
+#projects.projects-collapsed .projects-grid-clip{
+  max-height: var(--projects-collapsed-h, 780px);
+}
+
+#projects.projects-expanded .projects-grid-clip{
+  max-height: var(--projects-expanded-h, 5000px);
+}
+
+/* Bottom “fade” hint in collapsed mode */
+#projects.projects-collapsed .projects-grid-clip::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 190px;
+  background: linear-gradient(
+    to bottom,
+    rgba(2,6,23,0),
+    rgba(2,6,23,0.65) 40%,
+    rgba(2,6,23,0.92)
+  );
+  pointer-events: none;
+}
+
+/* Overlay (glass) */
+#projects .projects-expand-overlay{
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0;
+  padding: 1.25rem 1.25rem 1.35rem;
+  display: grid;
+  justify-items: center;
+  gap: .55rem;
+  pointer-events: none;
+}
+
+#projects .projects-expand-btn{
+  pointer-events: auto;
+  border: 1px solid rgba(148,163,184,0.30);
+  background: rgba(15,23,42,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e5e7eb;
+  border-radius: 999px;
+  padding: .72rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 650;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+#projects .projects-expand-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(56,189,248,0.55);
+  background: rgba(15,23,42,0.68);
+}
+
+#projects .projects-expand-btn i{
+  transition: transform .18s ease;
+}
+
+#projects.projects-expanded .projects-expand-overlay{
+  display: none;
+}
+
+#projects .projects-expand-meta{
+  pointer-events: none;
+  font-size: 1.2rem;
+  color: rgba(229,231,235,0.78);
+}
+
+/* Collapse bar (only visible when expanded) */
+#projects .projects-collapsebar{
+  display: none;
+  justify-content: flex-end;
+  margin: 0 0 1rem;
+}
+
+#projects.projects-expanded .projects-collapsebar{
+  display: flex;
+}
+
+#projects .projects-expand-btn--subtle{
+  background: transparent;
+  border-color: rgba(148,163,184,0.35);
+  box-shadow: none;
+  padding: .55rem 1.05rem;
+  font-size: .9rem;
+}
+
+#projects .projects-expand-btn--subtle:hover{
+  background: rgba(15,23,42,0.35);
+}
+
+/* Mobile: center collapse button */
+@media (max-width: 768px){
+  #projects .projects-collapsebar{ justify-content: center; }
+}
+
+/* In collapsed mode, block interactions inside the clip (overlay is the gateway) */
+#projects.projects-collapsed .projects-grid-clip .projects-grid{
+  pointer-events: none;
+}
+#projects.projects-expanded .projects-grid-clip .projects-grid{
+  pointer-events: auto;
+}
+
+/* =========================================================
+   Projects: lift "Show all projects" overlay upward (collapsed)
+   Paste at END of style.css
+   ========================================================= */
+
+/* Tuning knobs */
+#projects.projects-collapsed{
+  --projects-overlay-lift: 70px; /* increase = moves button further up */
+  --projects-fade-height: 80px;  /* increase = taller fade to match */
+}
+
+/* Move the overlay up (so it sits around the image end / lower 1/3 of cards) */
+#projects.projects-collapsed .projects-expand-overlay{
+  bottom: var(--projects-overlay-lift);
+  padding: 1.05rem 1.25rem 1.05rem; /* slightly tighter so it doesn't feel too low */
+}
+
+/* Make the fade taller so the lifted overlay still feels "enveloped" */
+#projects.projects-collapsed .projects-grid-clip::after{
+  height: var(--projects-fade-height);
+}
+
+/* =========================================================
+   Projects: overlay text contrast + synced with button color
+   Paste at END of style.css
+   ========================================================= */
+
+   #projects.projects-collapsed .projects-expand-overlay{
+    /* helps readability over the fade */
+    text-shadow: 0 10px 28px rgba(0,0,0,0.65);
+  }
+  
+  /* Button text stronger + “accent-synced” */
+  #projects.projects-collapsed .projects-expand-btn{
+    color: #e0f2fe; /* matches your cyan/sky theme */
+    border-color: rgba(14,165,233,0.55);
+    background: rgba(15,23,42,0.72);
+    box-shadow:
+      0 18px 50px rgba(0,0,0,0.42),
+      0 0 0 1px rgba(14,165,233,0.14);
+  }
+  
+  #projects.projects-collapsed .projects-expand-btn:hover{
+    border-color: rgba(56,189,248,0.70);
+    background: rgba(15,23,42,0.82);
+  }
+  
+  /* Subtitle line (“12 projects…”) higher contrast but still subtle */
+  #projects.projects-collapsed .projects-expand-meta{
+    color: rgba(224,242,254,0.86);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-shadow: 0 10px 26px rgba(0,0,0,0.55);
+  }
+  
+  /* Optional: make chevron match the button text */
+  #projects.projects-collapsed .projects-expand-btn i{
+    color: inherit;
+  }
+  
+
+  /* ================================
+   EXPERIENCE (Hridya-style cards)
+   Paste at END of style.css
+   ================================ */
+
+#experience .timeline--cards{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* date left, card right */
+#experience .timeline--cards .timeline-item{
+  display: grid;
+  grid-template-columns: 165px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+#experience .timeline--cards .timeline-date{
+  color: rgba(156, 163, 175, 0.95);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-top: 0.85rem;
+}
+
+/* Card */
+#experience .exp-card{
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  box-shadow: var(--shadow-subtle);
+  padding: 1.25rem 1.25rem;
+}
+
+/* Header row */
+#experience .exp-head{
+  display: flex;
+  gap: 0.95rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+#experience .exp-logo{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  object-fit: contain;
+  flex: 0 0 auto;
+
+  /* contrast backing for dark logos */
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 6px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+}
+
+#experience .exp-logo--placeholder{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #0b1220;
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+  border: none;
+  padding: 0;
+}
+
+#experience .exp-company{
+  margin: 0;
+  font-size: 1.12rem;
+  letter-spacing: 0.01em;
+}
+
+#experience .exp-role{
+  margin-top: 0.12rem;
+  color: rgba(229, 231, 235, 0.9);
+  font-size: 0.96rem;
+}
+
+/* Skill chips row */
+#experience .exp-skill-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.6rem;
+}
+
+#experience .exp-skill{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.34rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.72);
+  color: rgba(224, 242, 254, 0.92);
+  font-size: 0.84rem;
+  line-height: 1.1;
+}
+
+/* Body */
+#experience .exp-abstract{
+  margin: 0.85rem 0 0.85rem;
+  color: var(--text-muted);
+  font-size: 1.0rem;
+  line-height: 1.85;
+}
+
+#experience .exp-bullets{
+  margin: 0;
+  padding-left: 1.15rem;
+  color: rgba(156, 163, 175, 0.95);
+  line-height: 1.85;
+}
+
+#experience .exp-bullets li{
+  margin-bottom: 0.55rem;
+}
+
+#experience .exp-result{
+  margin: 0.9rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  color: rgba(229, 231, 235, 0.92);
+  line-height: 1.75;
+}
+
+#experience .exp-result-key{
+  font-weight: 800;
+  color: #e0f2fe;
+}
+
+/* Responsive: stack date above card */
+@media (max-width: 768px){
+  #experience .timeline--cards .timeline-item{
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  #experience .timeline--cards .timeline-date{
+    padding-top: 0;
+    font-size: 0.85rem;
+  }
+}
+
+/* =========================
+   ApTSi (brand theme)
+   ========================= */
+:root{
+  --aptsi: #1D1D45; /* deep navy/purple */
+}
+
+/* Optional: subtle themed border/glow for this card */
+.exp-card--aptsi{
+  border: 1px solid color-mix(in srgb, var(--aptsi) 18%, transparent);
+}
+
+/* ApTSi logo in the experience header */
+.exp-logo--aptsi{
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--aptsi) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--aptsi) 22%, transparent);
+  overflow: hidden;
+}
+
+.exp-logo--aptsi img{
+  height: 18px;      /* keep it inside the square */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Company row: name + button aligned */
+.exp-company-row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ApTSi button theme */
+.btn-company--aptsi{
+  --brand: var(--aptsi);
+}
+
+/* Badge inside the button */
+.btn-company--aptsi .company-badge{
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 28%, transparent);
+}
+
+/* Logo inside the badge */
+.btn-company--aptsi .company-badge img{
+  height: 16px;   /* matches typical GitHub-size badge icon */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* EXPERIENCE: make logo + company name clickable without changing the look */
+#experience .exp-logo-link{
+  display: inline-flex;
+  border-radius: 14px; /* matches exp-logo rounding */
+  text-decoration: none;
+}
+
+#experience .exp-company-link{
+  color: inherit;          /* keep same as heading */
+  text-decoration: none;   /* remove underline */
+}
+
+#experience .exp-company-link:hover{
+  color: var(--accent);    /* matches your theme */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Optional: subtle hover lift on logo only */
+#experience .exp-logo-link:hover .exp-logo{
+  transform: translateY(-1px);
+  transition: transform var(--transition-fast);
+}
+
+
+/* =========================================================
+   EDUCATION (Yash) — slick layout + boxed panels
+   Scoped to #education only (safe to paste at END of CSS)
+   ========================================================= */
+
+   #education .edu-layout{
+    display:grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items:start;
+    margin-top: 2.2rem;
+  }
+  
+  /* LEFT stack */
+  #education .edu-left{
+    display:flex;
+    flex-direction:column;
+    gap: 1.15rem;
+  }
+  
+  #education .edu-degree-card{
+    display:flex;
+    gap: 1rem;
+    align-items:flex-start;
+    padding: 1.15rem 1.2rem;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 0 0, rgba(56,189,248,.12), rgba(15,23,42,.96));
+    border: 1px solid rgba(148,163,184,.26);
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  #education .edu-degree-card:hover{
+    transform: translateY(-2px);
+    border-color: rgba(14,165,233,.55);
+    box-shadow: 0 20px 55px rgba(0,0,0,.45);
+  }
+  
+  #education .edu-logo-link{
+    display:inline-flex;
+    flex: 0 0 auto;
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    padding: .55rem;
+    background: rgba(2,6,23,.35);
+    border: 1px solid rgba(148,163,184,.22);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  }
+  
+  #education .edu-logo-lg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display:block;
+    border-radius: 10px;
+  }
+  
+  #education .edu-degree-body{ min-width:0; }
+  
+  #education .edu-school-link{
+    text-decoration:none;
+    color: inherit;
+    display:inline-block;
+  }
+  
+  #education .edu-school{
+    margin: 0 0 .25rem;
+    font-size: 1.08rem;
+    line-height: 1.25;
+    letter-spacing: .01em;
+  }
+  
+  #education .edu-school-link:hover .edu-school{
+    text-decoration: underline;
+    text-decoration-color: rgba(56,189,248,.7);
+    text-underline-offset: 4px;
+  }
+  
+  #education .edu-degree{
+    margin: 0 0 .65rem;
+    color: var(--text-muted);
+    font-size: .98rem;
+    line-height: 1.5;
+  }
+  
+  #education .edu-meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: .55rem;
+  }
+  
+  #education .edu-pill{
+    display:inline-flex;
+    align-items:center;
+    padding: .28rem .78rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,.38);
+    background: rgba(15,23,42,.72);
+    color: #e5e7eb;
+    font-size: .86rem;
+    line-height: 1.2;
+  }
+  
+  #education .edu-pill--accent{
+    border-color: rgba(56,189,248,.65);
+    background: rgba(56,189,248,.12);
+    color: #e0f2fe;
+    font-weight: 700;
+  }
+  
+  /* RIGHT side */
+  #education .edu-right{
+    display:flex;
+    flex-direction:column;
+    gap: 1.15rem;
+  }
+  
+  #education .edu-panel{
+    padding: 1.2rem 1.2rem;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 0 0, rgba(56,189,248,.10), rgba(15,23,42,.96));
+    border: 1px solid rgba(148,163,184,.26);
+    box-shadow: var(--shadow-subtle);
+  }
+  
+  #education .edu-panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 1rem;
+    flex-wrap:wrap;
+    margin-bottom: .85rem;
+  }
+  
+  #education .edu-panel-title{
+    margin: 0;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+  }
+  
+  /* Tabs */
+  #education .edu-tabs{
+    display:flex;
+    gap: .55rem;
+    flex-wrap:wrap;
+  }
+  
+  #education .edu-tab{
+    border-radius: 999px;
+    padding: .42rem .85rem;
+    font-size: .88rem;
+    border: 1px solid rgba(148,163,184,.45);
+    background: rgba(15,23,42,.70);
+    color: #cbd5e1;
+    cursor:pointer;
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+  
+  #education .edu-tab:hover{
+    border-color: rgba(248,250,252,.75);
+    color: #f1f5f9;
+  }
+  
+  #education .edu-tab.is-active{
+    background: rgba(14,165,233,.14);
+    border-color: rgba(14,165,233,.9);
+    color: #e0f2fe;
+    box-shadow: 0 0 0 1px rgba(14,165,233,.18);
+  }
+  
+  /* Panes */
+  #education .edu-pane{ display:none; }
+  #education .edu-pane.is-active{ display:block; }
+  
+  #education .edu-course-list{
+    margin: 0;
+    padding-left: 1.15rem;
+    color: var(--text-muted);
+  }
+  
+  #education .edu-course-list li{
+    margin: .42rem 0;
+  }
+  
+  /* Box panels (like your 2nd image) */
+  #education .edu-boxes{
+    display:flex;
+    flex-direction:column;
+    gap: .9rem;
+  }
+  
+  #education .edu-box{
+    padding: 1.05rem 1.1rem;
+    border-radius: var(--radius-lg);
+    background: rgba(15,23,42,.92);
+    border: 1px solid rgba(148,163,184,.24);
+    box-shadow: var(--shadow-subtle);
+  }
+  
+  #education .edu-box-label{
+    font-size: .74rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: .55rem;
+  }
+  
+  #education .edu-chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: .55rem;
+  }
+  
+  #education .edu-chip{
+    display:inline-flex;
+    padding: .30rem .80rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,.40);
+    background: rgba(15,23,42,.72);
+    color: #e5e7eb;
+    font-size: .86rem;
+    line-height: 1.2;
+  }
+  
+  /* Responsive */
+  @media (max-width: 980px){
+    #education .edu-layout{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* =========================================
+   EDUCATION (Yash v2 — slick + big logos)
+   Scoped to #education only
+   Paste at END of style.css
+   ========================================= */
+
+#education .edu-grid-v2{
+  display:grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items:start;
+  margin-top: 1.25rem;
+}
+
+#education .edu-degree-col{
+  display:flex;
+  flex-direction:column;
+  gap: 1.2rem;
+}
+
+/* Degree card */
+#education .edu-degree-card{
+  padding: 1.15rem 1.2rem;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 0 0, rgba(56,189,248,.10), rgba(15,23,42,.96));
+  border: 1px solid rgba(148,163,184,.28);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Header layout: big logo badge + text */
+#education .edu-degree-head{
+  display:grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 1.05rem;
+  align-items:center;
+}
+
+/* Big, visible logo block (matches your screenshot vibe) */
+#education .edu-logo-badge{
+  width: 84px;
+  height: 84px;
+  border-radius: 18px;
+  background: rgba(2,6,23,.35);
+  border: 1px solid rgba(148,163,184,.28);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: .55rem;
+}
+
+#education .edu-logo-badge img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  display:block;
+}
+
+/* Text hierarchy */
+#education .edu-degree-title{
+  margin: 0 0 .25rem;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+#education .edu-school-line{
+  margin: 0 0 .55rem;
+  color: var(--text-muted);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+
+#education .edu-dot{
+  opacity: .65;
+  margin: 0 .35rem;
+}
+
+/* Meta pills */
+#education .edu-meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap: .55rem;
+  align-items:center;
+}
+
+#education .edu-pill{
+  display:inline-flex;
+  align-items:center;
+  padding: .34rem .78rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.38);
+  background: rgba(15,23,42,.72);
+  color: #e5e7eb;
+  font-size: .86rem;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+#education .edu-pill--accent{
+  border-color: rgba(56,189,248,.55);
+  background: rgba(56,189,248,.12);
+  color: #e0f2fe;
+  font-weight: 750;
+}
+
+/* Coursework card */
+#education .edu-course-card{
+  padding: 1.25rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 100% 0, rgba(56,189,248,.10), rgba(15,23,42,.96));
+  border: 1px solid rgba(148,163,184,.28);
+  box-shadow: var(--shadow-subtle);
+}
+
+#education .edu-course-top h3{
+  margin: 0 0 .25rem;
+}
+
+#education .edu-course-sub{
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: .95rem;
+}
+
+#education .edu-course-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+#education .edu-course-block h4{
+  margin: 0 0 .55rem;
+  font-size: .95rem;
+  letter-spacing: .01em;
+}
+
+#education .edu-course-list{
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text-muted);
+  font-size: .95rem;
+  line-height: 1.75;
+}
+
+#education .edu-course-list li{
+  margin: .35rem 0;
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  #education .edu-grid-v2{
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  #education .edu-course-grid{
+    grid-template-columns: 1fr;
+  }
+
+  #education .edu-degree-head{
+    grid-template-columns: 76px minmax(0, 1fr);
+  }
+
+  #education .edu-logo-badge{
+    width: 76px;
+    height: 76px;
+    border-radius: 16px;
+    padding: .5rem;
+  }
+}
+
+/* =========================================================
+   EDUCATION (Balanced v4 — consistent scale + glowing GPA)
+   Scoped to #education only
+   ========================================================= */
+
+   #education .edu-v4-grid{
+    display:grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 2.0rem;
+    align-items: stretch;
+    margin-top: 1.9rem;
+  }
+  
+  #education .edu-v4-left{
+    display:flex;
+    flex-direction:column;
+    gap: 1.2rem;
+    height: 100%;
+  }
+  
+  #education .edu-v4-card{
+    display:grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 1.15rem;
+    align-items: center;
+  
+    padding: 1.15rem 1.25rem;
+    border-radius: 1.45rem;
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    box-shadow: 0 16px 44px rgba(0,0,0,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #education .edu-v4-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 14% 0, rgba(56,189,248,.08), transparent 58%),
+      radial-gradient(circle at 96% 110%, rgba(99,102,241,.05), transparent 60%);
+    pointer-events:none;
+  }
+  
+  #education .edu-v4-logoLink{
+    display:inline-flex;
+    text-decoration:none;
+    z-index: 1;
+  }
+  
+  #education .edu-v4-logoWrap{
+    width: 78px;
+    height: 78px;
+    border-radius: 16px;
+    display:grid;
+    place-items:center;
+  
+    background: radial-gradient(circle at 30% 10%, rgba(56,189,248,.14), rgba(2,6,23,.55));
+    border: 1px solid rgba(148,163,184,.22);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.04),
+      0 12px 22px rgba(0,0,0,.24);
+    transition: transform .18s ease-out, border-color .18s ease-out;
+  }
+  
+  #education .edu-v4-logoWrap--white{
+    background: rgba(248,250,252,.95);
+    border-color: rgba(148,163,184,.28);
+  }
+  
+  #education .edu-v4-logoLink:hover .edu-v4-logoWrap{
+    transform: translateY(-1px);
+    border-color: rgba(248,250,252,.62);
+  }
+  
+  #education .edu-v4-logo{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    padding: .32rem;
+    display:block;
+  }
+  
+  #education .edu-v4-logo--tight{ padding: .18rem; }
+  
+  #education .edu-v4-body{
+    min-width: 0;
+    z-index: 1;
+  }
+  
+  /* University name: prominent but NOT huge */
+  #education .edu-v4-school{
+    display:inline-flex;
+    text-decoration:none;
+    color: #f8fafc;
+  
+    font-size: 1.18rem;   /* reduced */
+    font-weight: 850;
+    line-height: 1.18;
+    letter-spacing: .01em;
+  
+    margin: 0 0 .45rem;
+    max-width: 100%;
+  }
+  
+  #education .edu-v4-school:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+  
+  /* Degree: strong but secondary */
+  #education .edu-v4-degree{
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: rgba(229,231,235,.96);
+    line-height: 1.35;
+    margin: 0 0 .75rem;
+  }
+  
+  #education .edu-v4-degreeNote{
+    margin-left: .45rem;
+    font-weight: 700;
+    color: rgba(148,163,184,.90);
+  }
+  
+  /* Duration row */
+  #education .edu-v4-subrow{
+    display:flex;
+    flex-wrap:wrap;
+    gap: .55rem .9rem;
+    align-items:center;
+  
+    color: rgba(148,163,184,.95);
+    font-size: .98rem;
+    margin-bottom: .95rem;
+  }
+  
+  #education .edu-v4-duration{
+    padding: .30rem .70rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,.28);
+    background: rgba(2,6,23,.30);
+  }
+  
+  /* GPA row + subtle divider */
+  #education .edu-v4-gpaRow{
+    display:flex;
+    align-items:center;
+    gap: .75rem;
+    padding-top: .85rem;
+    border-top: 1px solid rgba(148,163,184,.16);
+  }
+  
+  #education .edu-v4-gpaLabel{
+    font-size: .86rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(148,163,184,.95);
+  }
+  
+  /* Glowing box around GPA (restored vibe) */
+  #education .edu-v4-gpaGlow{
+    display:inline-flex;
+    align-items:center;
+    padding: .40rem .72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(56,189,248,.26);
+    background:
+      radial-gradient(circle at 20% 10%, rgba(56,189,248,.18), transparent 55%),
+      rgba(2,6,23,.22);
+    box-shadow:
+      0 10px 24px rgba(0,0,0,.22),
+      0 0 0 1px rgba(255,255,255,.03) inset;
+  }
+  
+  #education .edu-v4-gpaValue{
+    font-size: 1.10rem;     /* reduced but still prominent */
+    font-weight: 900;
+    color: #e0f2fe;
+    text-shadow: 0 0 18px rgba(56,189,248,.12);
+  }
+  
+  /* Right coursework card */
+  #education .edu-v4-courseCard{
+    height: 100%;
+    padding: 1.2rem 1.2rem 1.15rem;
+    border-radius: 1.45rem;
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    box-shadow: 0 16px 44px rgba(0,0,0,0.35);
+  }
+  
+  #education .edu-v4-courseTitle{
+    margin: 0 0 .95rem;
+    font-size: 1.12rem;
+  }
+  
+  #education .edu-v4-courseCols{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem;
+  }
+  
+  #education .edu-v4-courseH{
+    margin: .1rem 0 .7rem;
+    font-size: .95rem;
+  }
+  
+  /* Chips (same look, not too bold) */
+  #education .edu-v4-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap: .58rem;
+  }
+  
+  #education .edu-v4-chip{
+    display:inline-flex;
+    align-items:center;
+    padding: .52rem .88rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,.38);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03)),
+      rgba(2,6,23,.30);
+    color: #e5e7eb;
+    font-size: .90rem;
+    line-height: 1.1;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+    transition: transform .18s ease-out, border-color .18s ease-out;
+  }
+  
+  #education .edu-v4-chip:hover{
+    transform: translateY(-1px);
+    border-color: rgba(248,250,252,.62);
+  }
+  
+  /* Responsive */
+  @media (max-width: 980px){
+    #education .edu-v4-grid{
+      grid-template-columns: 1fr;
+      gap: 1.35rem;
+    }
+    #education .edu-v4-courseCols{
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 520px){
+    #education .edu-v4-card{
+      grid-template-columns: 80px minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.05rem 1.05rem;
+    }
+    #education .edu-v4-logoWrap{
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
+    }
+    #education .edu-v4-school{ font-size: 1.12rem; }
+    #education .edu-v4-gpaValue{ font-size: 1.05rem; }
+  }
+
+  /* =========================================================
+   EDUCATION v4 — COMPACT + THEME-SYNC (override patch)
+   Paste at END of style.css
+   ========================================================= */
+
+#education .section-header{
+  margin-bottom: 2.2rem; /* slightly tighter than global */
+}
+
+/* Grid: slightly tighter */
+#education .edu-v4-grid{
+  gap: 1.6rem;
+  margin-top: 1.35rem;
+}
+
+/* Left stack spacing */
+#education .edu-v4-left{
+  gap: 1rem;
+}
+
+/* Degree card: reduce visual bulk */
+#education .edu-v4-card{
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 0.95rem;
+  padding: 0.95rem 1.05rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.30);
+}
+
+/* Logo container smaller */
+#education .edu-v4-logoWrap{
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+}
+
+#education .edu-v4-logo{
+  border-radius: 12px;
+  padding: .28rem;
+}
+
+#education .edu-v4-logo--tight{
+  padding: .16rem;
+}
+
+/* Text hierarchy tighter */
+#education .edu-v4-school{
+  font-size: 1.06rem;
+  font-weight: 820;
+  margin: 0 0 .35rem;
+}
+
+#education .edu-v4-degree{
+  font-size: 0.94rem;
+  margin: 0 0 .55rem;
+}
+
+#education .edu-v4-subrow{
+  font-size: 0.90rem;
+  margin-bottom: 0.75rem;
+  gap: .45rem .75rem;
+}
+
+#education .edu-v4-duration{
+  padding: .24rem .60rem;
+  background: rgba(2,6,23,.22);
+}
+
+/* GPA row tighter */
+#education .edu-v4-gpaRow{
+  padding-top: .65rem;
+  gap: .6rem;
+}
+
+/* GPA label smaller */
+#education .edu-v4-gpaLabel{
+  font-size: .78rem;
+}
+
+/* GPA pill: MATCH your button gradient vibe */
+#education .edu-v4-gpaGlow{
+  padding: .34rem .62rem;
+  border-radius: 999px;
+
+  border: 1px solid rgba(14,165,233,0.45);
+  background:
+    linear-gradient(135deg, rgba(34,211,238,0.18), rgba(14,165,233,0.18)),
+    rgba(2,6,23,0.22);
+
+  box-shadow:
+    0 12px 28px rgba(8,47,73,0.28),
+    0 0 0 1px rgba(14,165,233,0.10) inset;
+}
+
+#education .edu-v4-gpaValue{
+  font-size: 1.00rem;
+  font-weight: 900;
+  color: #e0f2fe;
+}
+
+/* Coursework card: compact to match degree cards */
+#education .edu-v4-courseCard{
+  padding: 1.0rem 1.0rem 0.95rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.30);
+}
+
+#education .edu-v4-courseTitle{
+  font-size: 1.05rem;
+  margin: 0 0 .75rem;
+}
+
+#education .edu-v4-courseCols{
+  gap: .9rem;
+}
+
+#education .edu-v4-courseH{
+  font-size: .90rem;
+  margin: .1rem 0 .55rem;
+}
+
+/* Coursework chips: smaller + denser */
+#education .edu-v4-chips{
+  gap: .48rem;
+}
+
+#education .edu-v4-chip{
+  padding: .42rem .72rem;
+  font-size: .86rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02)),
+    rgba(2,6,23,.26);
+}
+
+/* Responsive tweaks */
+@media (max-width: 980px){
+  #education .edu-v4-grid{ gap: 1.15rem; }
+  #education .edu-v4-courseCols{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px){
+  #education .edu-v4-card{
+    grid-template-columns: 68px minmax(0, 1fr);
+    padding: 0.9rem 0.95rem;
+  }
+  #education .edu-v4-logoWrap{ width: 60px; height: 60px; }
+  #education .edu-v4-school{ font-size: 1.02rem; }
+  #education .edu-v4-chip{ font-size: .84rem; }
+}
+
+/* ===========================
+   Certifications (grid + boxed items)
+   =========================== */
+
+   #certifications .cert-card{
+    width: 100%;
+    border-radius: 1.4rem;
+    padding: 1.15rem;
+  
+    /* match your glassy theme */
+    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    border: 1px solid rgba(148,163,184,.18);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+  
+    /* consistent while page scrolls */
+    max-height: 420px;          /* adjust to taste */
+    overflow: auto;
+  }
+  
+  #certifications .cert-grid{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  
+    display: grid;
+    gap: .85rem;
+  
+    /* Uses the full rectangle width nicely */
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    align-items: stretch;
+  }
+  
+  #certifications .cert-item{
+    border-radius: 1.1rem;
+    padding: .9rem 1rem;
+  
+    background: rgba(2, 6, 23, 0.30);
+    border: 1px solid rgba(148,163,184,.16);
+    box-shadow: 0 12px 30px rgba(0,0,0,.22);
+  
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  
+  #certifications .cert-item:hover{
+    transform: translateY(-2px);
+    border-color: rgba(34,211,238,.28);
+    background: rgba(2, 6, 23, 0.40);
+  }
+  
+  #certifications .cert-name{
+    font-weight: 800;
+    font-size: 0.98rem;
+    letter-spacing: .2px;
+    color: rgba(255,255,255,.92);
+  }
+  
+  #certifications .cert-meta{
+    font-size: .88rem;
+    color: rgba(203,213,225,.78);
+  }
+  
+  /* Optional: nicer scrollbars (won't break anything if unsupported) */
+  #certifications .cert-card{
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34,211,238,.35) rgba(15,23,42,.35);
+  }
+  #certifications .cert-card::-webkit-scrollbar{
+    width: 10px;
+  }
+  #certifications .cert-card::-webkit-scrollbar-track{
+    background: rgba(15,23,42,.35);
+    border-radius: 999px;
+  }
+  #certifications .cert-card::-webkit-scrollbar-thumb{
+    background: rgba(34,211,238,.25);
+    border-radius: 999px;
+    border: 2px solid rgba(15,23,42,.35);
+  }
+  
+  @media (max-width: 520px){
+    #certifications .cert-card{
+      max-height: none; /* avoid nested scroll on very small screens */
+    }
+    #certifications .cert-grid{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* =========================================================
+   CERTIFICATIONS — Full viewport + 1-per-line list
+   Paste at VERY END of style.css
+   ========================================================= */
+
+/* Full screen section so next section doesn't peek */
+#certifications{
+  min-height: 100svh;            /* modern viewport unit */
+  display: flex;
+  align-items: center;           /* vertically centers the block */
+  padding: 0 !important;         /* override .section padding */
+  scroll-margin-top: 84px;       /* sticky header offset for nav clicks */
+}
+
+/* Keep your usual container width, but give it nice internal breathing room */
+#certifications .container{
+  width: 100%;
+  padding-block: clamp(3.75rem, 7vh, 5.75rem);
+}
+
+/* Slightly tighter header spacing (matches other sections) */
+#certifications .section-header{
+  margin-bottom: 2rem;
+}
+
+/* Glass shell that holds the list */
+#certifications .cert-shell{
+  width: min(980px, 100%);
+  margin: 0 auto;
+  border-radius: 1.6rem;
+  padding: 1.15rem;
+
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border: 1px solid rgba(148,163,184,.18);
+  box-shadow: 0 18px 44px rgba(0,0,0,.35);
+}
+
+/* IMPORTANT: make it a vertical list (not a multi-column grid) */
+#certifications .cert-grid{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;                /* overrides your grid */
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Each certification: one line item, full width */
+#certifications .cert-item{
+  border-radius: 1.2rem;
+  padding: 1rem 1.1rem;
+
+  background: rgba(2, 6, 23, 0.30);
+  border: 1px solid rgba(148,163,184,.18);
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+#certifications .cert-item:hover{
+  transform: translateY(-2px);
+  border-color: rgba(34,211,238,.32);
+  background: rgba(2, 6, 23, 0.40);
+}
+
+#certifications .cert-name{
+  font-weight: 800;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: rgba(255,255,255,.92);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#certifications .cert-meta{
+  font-size: .92rem;
+  line-height: 1.4;
+  color: rgba(203,213,225,.78);
+  white-space: nowrap;          /* keeps meta tidy on desktop */
+  flex: 0 0 auto;
+}
+
+/* Mobile: keep full-screen feel but allow natural height if needed */
+@media (max-width: 720px){
+  #certifications{
+    display: block;
+    min-height: 100svh;
+    padding: 0 !important;
+  }
+
+  #certifications .cert-item{
+    flex-direction: column;
+  }
+
+  #certifications .cert-meta{
+    white-space: normal;
+  }
+}
+
+
+  
+  /* =========================================================
+   CONTACT v3 + FOOTER v3 — FINAL (no duplicates)
+   Paste at VERY END of style.css
+   ========================================================= */
+
+/* Hide honeypot */
+#contact .hp-field{
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* Intro message */
+#contact .contact-intro{
+  max-width: 78ch;
+  margin: 0 auto 2.0rem;
+  padding: 1.05rem 1.15rem;
+  border-radius: 1.4rem;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.22);
+}
+
+#contact .contact-intro p{
+  margin: 0;
+  color: rgba(203,213,225,0.86);
+  font-size: 1.02rem;
+  line-height: 1.9;
+}
+
+/* Two-column layout */
+#contact .contact-v3{
+  display:grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 1.6rem;
+  align-items: start;
+  margin-top: 1.6rem;
+}
+
+#contact .contact-card{
+  border-radius: 1.6rem;
+  padding: 1.25rem 1.25rem;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 16px 44px rgba(0,0,0,0.35);
+}
+
+#contact .contact-card-title{
+  margin: 0 0 .35rem;
+  font-size: 1.12rem;
+  letter-spacing: .01em;
+}
+
+#contact .contact-card-sub{
+  margin: 0 0 1.05rem;
+  color: var(--text-muted);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+/* Form fields */
+#contact .contact-form{
+  display:flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+
+#contact .field{
+  display:flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+
+#contact .field span{
+  font-size: .76rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(148,163,184,.95);
+}
+
+#contact input,
+#contact textarea{
+  border-radius: 1rem;
+  padding: .82rem .95rem;
+  background: rgba(2, 6, 23, 0.35);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  color: #e5e7eb;
+  outline: none;
+  transition: border-color .18s ease, box-shadow .18s ease;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+#contact input:focus,
+#contact textarea:focus{
+  border-color: rgba(56,189,248,.55);
+  box-shadow: 0 0 0 3px rgba(56,189,248,.12);
+}
+
+/* ✅ Button not stretched */
+#contact .contact-form-actions{
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .8rem 1rem;
+  margin-top: .2rem;
+}
+
+#contact .contact-submit{
+  width: auto !important;
+  min-width: 210px;      /* keeps it “proper” without going full-width */
+  max-width: 280px;
+  justify-content: center;
+  min-height: 44px;
+  padding: .62rem 1.15rem;
+}
+
+#contact .contact-mini{
+  color: var(--text-muted);
+  font-size: .92rem;
+}
+
+#contact .contact-mini a{
+  color: var(--accent);
+  text-decoration: none;
+}
+#contact .contact-mini a:hover{ text-decoration: underline; }
+
+/* Profiles list */
+#contact .profile-list{
+  display:flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+
+#contact .profile-item{
+  display:flex;
+  align-items:center;
+  gap: .85rem;
+  padding: .92rem 1rem;
+  border-radius: 1.2rem;
+  text-decoration:none;
+
+  background: rgba(2, 6, 23, 0.28);
+  border: 1px solid rgba(148,163,184,.18);
+  box-shadow: 0 12px 30px rgba(0,0,0,.20);
+
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+#contact .profile-item:hover{
+  transform: translateY(-2px);
+  border-color: rgba(34,211,238,.28);
+  background: rgba(2, 6, 23, 0.40);
+}
+
+#contact .profile-icon{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  flex: 0 0 auto;
+
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(148,163,184,.28);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  color: #0b1220;
+}
+
+#contact .profile-text{
+  display:flex;
+  flex-direction: column;
+  gap: .12rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+#contact .profile-text strong{
+  color: #e5e7eb;
+  font-size: .98rem;
+}
+
+#contact .profile-text small{
+  color: rgba(203,213,225,.78);
+  font-size: .88rem;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#contact .profile-item i.fa-chevron-right{
+  color: rgba(148,163,184,.9);
+  flex: 0 0 auto;
+}
+
+#contact .contact-meta-inline{
+  margin-top: .2rem;
+  color: rgba(203,213,225,.80);
+  font-size: .92rem;
+}
+
+/* Success / error messages */
+#contact .contact-success,
+#contact .contact-error{
+  margin: .35rem 0 0;
+  font-size: .94rem;
+  width: 100%;
+}
+
+#contact .contact-success{ color: rgba(224,242,254,.92); }
+#contact .contact-error{ color: rgba(252,165,165,.92); }
+
+/* Responsive */
+@media (max-width: 900px){
+  #contact .contact-v3{
+    grid-template-columns: 1fr;
+  }
+  #contact .contact-submit{
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   FOOTER v3 — “market format”
+   ========================================================= */
+
+.site-footer{
+  padding: 1.25rem 0 1.6rem;
+}
+
+.footer-v3{
+  display:flex;
+  flex-direction: column;
+  gap: .9rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-links{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+  align-items:center;
+  justify-content:center;
+}
+
+.footer-links a{
+  color: rgba(203,213,225,.90);
+  text-decoration:none;
+  font-size: .92rem;
+  display:inline-flex;
+  align-items:center;
+  gap: .55rem;
+
+  padding: .45rem .8rem;
+  border-radius: 999px;
+  background: rgba(15,23,42,0.45);
+  border: 1px solid rgba(148,163,184,0.18);
+
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+}
+
+.footer-links a:hover{
+  transform: translateY(-1px);
+  border-color: rgba(56,189,248,0.55);
+  background: rgba(15,23,42,0.60);
+  color: #e0f2fe;
+}
+
+.footer-links i{
+  color: rgba(56,189,248,.95);
+}
+
+.footer-copy{
+  color: rgba(156,163,175,0.92);
+  font-size: .88rem;
+}
+
+/* =========================================================
+   CONTACT v3 — Intro full width + equal-height cards
+   Paste at VERY END of style.css
+   ========================================================= */
+
+/* Grid now contains intro + two cards */
+#contact .contact-v3{
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-rows: auto 1fr;   /* intro = auto, cards row = same height */
+  gap: 1.6rem;
+  align-items: stretch;           /* ✅ cards stretch to same height */
+  margin-top: 1.6rem;
+}
+
+/* Intro spans BOTH columns and matches the combined width */
+#contact .contact-intro{
+  grid-column: 1 / -1;            /* ✅ full width of grid (both cards) */
+  width: 100%;
+  max-width: none;                /* ✅ remove the 78ch limit */
+  margin: 0;                      /* grid handles spacing */
+  padding: 1.05rem 1.15rem;
+  border-radius: 1.4rem;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.22);
+}
+
+/* Cards become equal-height columns */
+#contact .contact-card{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form: make actions sit near the bottom for nicer alignment */
+#contact .contact-form{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+#contact .contact-form-actions{
+  margin-top: auto;               /* ✅ pushes actions down */
+}
+
+/* Profiles: spread items evenly through the available height */
+#contact .contact-card--profiles .profile-list{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Make each profile row share height (even distribution) */
+#contact .contact-card--profiles .profile-item{
+  flex: 1 1 0;                    /* ✅ evenly spreads */
+  min-height: 74px;               /* keeps it from being too short */
+  display: flex;
+  align-items: center;
+}
+
+/* Keep location line pinned at the bottom */
+#contact .contact-card--profiles .contact-meta-inline{
+  margin-top: auto;
+  padding-top: .35rem;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 900px){
+  #contact .contact-v3{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  #contact .contact-intro{ grid-column: 1; }
+
+  /* On mobile, no need to force equal distribution */
+  #contact .contact-card--profiles .profile-item{
+    flex: 0 0 auto;
+    min-height: 0;
+  }
+}
+
+/* =========================================================
+   EXPERIENCE v2 — map line + node dots + show more
+   Paste at VERY END of style.css
+   ========================================================= */
+
+   #experience .timeline--cards{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  /* Vertical map line (left column) */
+  #experience .timeline--cards::before{
+    content:"";
+    position:absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 22px;
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to bottom,
+      rgba(148,163,184,0.10),
+      rgba(56,189,248,0.30),
+      rgba(148,163,184,0.10)
+    );
+  }
+  
+  /* date left, card right */
+  #experience .timeline--cards .timeline-item{
+    display: grid;
+    grid-template-columns: 165px minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+  
+  /* Left side holds dot + date */
+  #experience .timeline-side{
+    position: relative;
+    padding-left: 52px;        /* room for dot + line */
+    padding-top: 0.85rem;
+  }
+  
+  /* Dot node */
+  #experience .timeline-dot{
+    position:absolute;
+    left: 16px;               /* centers on the 22px line */
+    top: 1.05rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+    box-shadow:
+      0 10px 22px rgba(8,47,73,0.35),
+      0 0 0 4px rgba(56,189,248,0.10);
+    opacity: 0;
+    transform: scale(0.55);
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  
+  /* Dot animates in when the item animates in */
+  #experience .timeline-item.animate-in .timeline-dot{
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  #experience .timeline-date{
+    color: rgba(156, 163, 175, 0.95);
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.25;
+  }
+  
+  /* Keep your existing card styling, just ensure spacing is tight */
+  #experience .exp-card{
+    padding: 1.25rem 1.25rem;
+  }
+  
+  /* Collapsible for Experience (collapsed = fully hidden) */
+  #experience .exp-collapsible{
+    margin-top: 0.85rem;
+  }
+  
+  #experience .exp-details{
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .30s ease, opacity .18s ease;
+  }
+  
+  #experience .exp-collapsible[data-collapsed="false"] .exp-details{
+    max-height: 1200px;  /* big enough for any card */
+    opacity: 1;
+  }
+  
+  /* Button */
+  #experience .exp-toggle{
+    margin-top: 0.75rem;
+    width: fit-content;
+    padding: 0.48rem 0.95rem;
+    font-size: 0.90rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+  }
+  
+  #experience .exp-toggle i{
+    transition: transform .18s ease-out;
+  }
+  
+  #experience .exp-collapsible[data-collapsed="false"] .exp-toggle i{
+    transform: rotate(180deg);
+  }
+  
+  /* Optional: slightly tighter bullets in expanded area */
+  #experience .exp-bullets{
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+  
+  #experience .exp-bullets li{
+    margin-bottom: 0.55rem;
+  }
+  
+  /* Responsive: stack (line stays on left, looks like a map) */
+  @media (max-width: 768px){
+    #experience .timeline--cards .timeline-item{
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+    }
+  
+    #experience .timeline--cards::before{
+      left: 18px;
+      top: 10px;
+      bottom: 10px;
+    }
+  
+    #experience .timeline-side{
+      padding-left: 44px;
+      padding-top: 0;
+    }
+  
+    #experience .timeline-dot{
+      left: 12px;
+      top: 0.25rem;
+    }
+  }
+  

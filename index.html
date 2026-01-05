@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yash Ingle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Yash Daniel Ingle – Embedded systems, Edge AI, and software engineering." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo_yas.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-mark">YI</span>
+        <span class="logo-text">Yash Ingle</span>
+      </div>
+
+      <nav class="site-nav" id="siteNav">
+        <a href="#home">Home</a>
+        <a href="#about">Background</a>
+        <a href="#skills">Skills</a>
+
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+       
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-outline" data-resume-trigger="embedded">View Resumes</button>
+        <!-- <button id="themeToggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button> -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <div class="container hero-inner">
+      <section class="hero-text" data-animate="left">
+        <p class="hero-kicker">Embedded Systems • Edge AI • Software Engineering</p>
+      
+        <h1 class="hero-title">
+          <span class="hero-hello">Hello, I am</span>
+          <span class="hero-name">Yash Ingle</span>
+      
+          <span class="hero-rotator">
+            I build <span id="heroType" class="accent typewriter-caret" aria-live="polite">reliable embedded systems</span>
+          </span>
+        </h1>
+      
+        <p class="hero-body">
+          I enjoy getting systems working end to end. 
+          <br>Embedded software, sensor pipelines, on-device AI, and the tooling that makes hardware reliable in production.
+        </p>
+      
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#experience" class="btn btn-ghost">View Experience</a>
+        </div>
+      </section>
+      
+      <aside class="hero-aside" data-animate="right">
+        <div class="hero-photo-card">
+          <img
+            src="images/yash_photo.png"
+            alt="Photo of Yash Daniel Ingle"
+            class="hero-photo"
+          />
+        </div>
+
+        <div class="hero-card">
+          <p class="hero-label">Open to Immediate Opportunities</p>
+          <p class="hero-value">
+            Embedded Software · Firmware · Computer Vision <br />
+            Systems Engineer · Software Engineer
+          </p>
+        </div>
+
+        <div class="hero-links">
+          <a href="https://www.linkedin.com/in/yashingle1207/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/yashingle1207" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="mailto:yashingle1207@gmail.com" aria-label="Email">
+            <i class="fa-regular fa-envelope"></i>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-alt">
+    <div class="container section-inner about-inner">
+      <div class="section-header" data-animate="up">
+        <h2>Background</h2>
+      </div>
+
+      <div class="about-grid">
+        <div data-animate="left">
+          <h3>About Me</h3>
+          <p>
+            Hi, I’m <strong>Yash Ingle</strong>, an <strong>Embedded Software Engineer</strong> focused
+            on building reliable, real-time systems that run close to real hardware. I work on
+            embedded Linux systems, sensor and camera pipelines, and on-device AI, where
+            performance, timing, and real-world behavior matter just as much as clean code.
+          </p>
+
+          <p>
+            I hold a <strong>Master’s in Embedded &amp; Cyber-Physical Systems from UC Irvine</strong>
+            and have hands-on experience deploying edge vision systems on NPUs and
+            microcontroller-class devices. Alongside embedded software, I work closely with
+            firmware including board bring-up, drivers, and hardware integration, and I enjoy
+            owning systems end to end and making them stable, observable, and production-ready.
+          </p>
+        </div>
+
+        <div class="about-facts" data-animate="right">
+          <div class="fact">
+            <span class="fact-label">Core Focus</span>
+            <div class="skill-chip-group">
+              <span class="skill-chip ">Embedded Software</span>
+              <span class="skill-chip">Real-Time Systems</span>
+              <span class="skill-chip">Edge AI</span>
+            </div>
+          </div>
+        
+          <div class="fact">
+            <span class="fact-label">Strengths</span>
+            <div class="skill-chip-group">
+              <span class="skill-chip">Software Development</span>
+              <span class="skill-chip">System Debugging</span>
+              <span class="skill-chip">Deterministic Pipelines</span>
+              <span class="skill-chip">On-Device AI/ML</span>
+              <span class="skill-chip">Sensor Integration</span>
+            </div>
+          </div>
+        
+          <div class="fact">
+            <span class="fact-label">Location</span>
+            <div class="skill-chip-group">
+              <span class="skill-chip">Irvine, CA</span>
+              <span class="skill-chip">Open to relocation</span>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header" data-animate="up">
+        <h2>Technical Areas</h2>
+        <p>What I use regularly to build, debug, and ship systems.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="card skills-card" data-animate="up">
+          <h3>Embedded &amp; Systems</h3>
+          <div class="skill-chip-group">
+            <span class="skill-chip skill-chip--primary"><i class="fa-brands fa-linux"></i> Embedded Linux · PREEMPT-RT</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-code"></i> C · C++ · POSIX</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-microchip"></i> STM32 · ESP32 · Raspberry Pi</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-plug"></i> SPI · I²C · UART · CAN · RS-485 (Modbus)</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-wave-square"></i> ADC · Timers · DMA · ISR Pipelines</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-clock"></i> RTOS · Deterministic Scheduling</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-bug"></i> Low-Level Debugging · GDB · Logic Analysis</span>
+          </div>
+        </article>
+
+        <article class="card skills-card" data-animate="up">
+          <h3>Edge AI &amp; Vision</h3>
+          <div class="skill-chip-group">
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-brain"></i> YOLOv8 · ONNX · TFLite · .synap</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-bolt"></i> On-Device AI · NPU Deployment</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-compress"></i> Quantization · INT8</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-camera"></i> Computer Vision · OpenCV · DSP</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-layer-group"></i> Temporal Smoothing · Sensor Fusion</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-gauge-high"></i> Profiling · Latency Optimization</span>
+          </div>
+        </article>
+
+        <article class="card skills-card" data-animate="up">
+          <h3>Software &amp; Infrastructure</h3>
+          <div class="skill-chip-group">
+            <span class="skill-chip skill-chip--primary"><i class="fa-brands fa-python"></i> Python · Flask · Django</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-diagram-project"></i> REST APIs · Async Services</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-brands fa-react"></i> React · Angular · JavaScript</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-database"></i> SQL · PostgreSQL · MySQL · MongoDB</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-brands fa-docker"></i> Docker · CI/CD · Git</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-brands fa-aws"></i> AWS · Lambda · EC2 · S3</span>
+            <span class="skill-chip skill-chip--primary"><i class="fa-solid fa-chart-line"></i> Observability · Logs · Metrics</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-header" data-animate="up">
+      <h2>Professional Background</h2>
+      <p>Roles where reliability, timing, and real hardware mattered.</p>
+    </div>
+
+    <div class="timeline timeline--cards">
+
+      <!-- Synaptics -->
+      <article class="timeline-item" data-animate="up">
+        <div class="timeline-side">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-date">Mar 2025 – Present</div>
+        </div>
+
+        <div class="timeline-content exp-card">
+          <div class="exp-head">
+            <a class="exp-logo-link" href="https://www.synaptics.com/" data-company-link aria-label="Synaptics website">
+              <img class="exp-logo" src="images/synaptics-logo.png" alt="Synaptics logo" loading="lazy" />
+            </a>
+
+            <div class="exp-head-text">
+              <h3 class="exp-company">
+                <a class="exp-company-link" href="https://www.synaptics.com/" data-company-link>
+                  Synaptics Incorporated — Apprentice
+                </a>
+              </h3>
+
+              <div class="exp-role">Embedded Firmware Engineer</div>
+
+              <div class="exp-skill-row" aria-label="Skills gained">
+                <span class="exp-skill">Yocto Linux</span>
+                <span class="exp-skill">Edge AI (SyNAP)</span>
+                <span class="exp-skill">Sensor fusion</span>
+                <span class="exp-skill">Real-time pipelines</span>
+                <span class="exp-skill">HIL testing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✅ Normal view = short overview only -->
+          <p class="exp-abstract">
+            Building a wearable navigation assistant on the Astra platform: on-device vision + multi-sensor fusion with low-latency,
+            stability-first feedback outside the lab.
+          </p>
+
+          <!-- ✅ Show more reveals details -->
+          <div class="exp-collapsible" data-collapsed="true">
+            <div class="exp-details collapsible-content" aria-hidden="true">
+              <ul class="exp-bullets">
+                <li>Designed a concurrent capture → preprocess/infer → control runtime with bounded queues + backpressure for predictable latency.</li>
+                <li>Integrated USB camera + ultrasonic (HC-SR04) + LiDAR (TFmini-S) and fused signals into robust guidance logic.</li>
+                <li>Validated behavior with structured logs/metrics and hardware-in-the-loop tests for end-to-end sensor → feedback.</li>
+                <li>Deployed edge inference (YOLOv8 → TFLite → Synap.rt) with stability-first drop/validation policies.</li>
+              </ul>
+
+              <p class="exp-result">
+                <span class="exp-result-key">Result:</span>
+                Stable end-to-end sensing + guidance pipeline with repeatable bring-up/debug workflows.
+              </p>
+            </div>
+
+            <button
+              class="btn btn-ghost btn-collapsible exp-toggle"
+              type="button"
+              data-exp-toggle
+              data-more="Show more"
+              data-less="Show less"
+              aria-expanded="false">
+              Show more <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Envipco -->
+      <article class="timeline-item" data-animate="up">
+        <div class="timeline-side">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-date">Jul 2025 – Dec 2025</div>
+        </div>
+
+        <div class="timeline-content exp-card">
+          <div class="exp-head">
+            <a class="exp-logo-link" href="https://www.envipco.com/" data-company-link aria-label="Envipco website">
+              <img class="exp-logo" src="images/envipco-logo.png" alt="Envipco logo" loading="lazy" />
+            </a>
+
+            <div class="exp-head-text">
+              <h3 class="exp-company">
+                <a class="exp-company-link" href="https://www.envipco.com/" data-company-link>
+                  Envipco
+                </a>
+              </h3>
+
+              <div class="exp-role">Embedded Engineer (Intern → Co-op)</div>
+
+              <div class="exp-skill-row" aria-label="Skills gained">
+                <span class="exp-skill">STM32</span>
+                <span class="exp-skill">ADC + DMA</span>
+                <span class="exp-skill">Fixed-point DSP</span>
+                <span class="exp-skill">RS-485 / Modbus</span>
+                <span class="exp-skill">CAN</span>
+                <span class="exp-skill">On-device CV</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="exp-abstract">
+            Owned production firmware + validation for reverse-vending machines—deterministic sampling pipelines,
+            robust comms, and field-friendly debugging under noisy real-world signals.
+          </p>
+
+          <div class="exp-collapsible" data-collapsed="true">
+            <div class="exp-details collapsible-content" aria-hidden="true">
+              <ul class="exp-bullets">
+                <li>Built production STM32 firmware: timer-triggered ADC + DMA pipelines, ISR/RTOS handoff, and fault-safe sampling.</li>
+                <li>Implemented calibration/compensation and fixed-point filtering/feature extraction to stabilize decisions under drift and noise.</li>
+                <li>Integrated controller communications over RS-485/Modbus and CAN; added debug hooks + structured logs for bring-up and field diagnostics.</li>
+                <li>Supported barcode/CV reliability: OpenMV inference workflows + Python tooling for repeatable multi-sensor evaluation.</li>
+              </ul>
+
+              <p class="exp-result">
+                <span class="exp-result-key">Result:</span>
+                Cleaner signal pipelines, dependable comms, and faster debug/validation loops for production decisions.
+              </p>
+            </div>
+
+            <button
+              class="btn btn-ghost btn-collapsible exp-toggle"
+              type="button"
+              data-exp-toggle
+              data-more="Show more"
+              data-less="Show less"
+              aria-expanded="false">
+              Show more <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Atlas Copco -->
+      <article class="timeline-item" data-animate="up">
+        <div class="timeline-side">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-date">Jan 2024 – Jun 2024</div>
+        </div>
+
+        <div class="timeline-content exp-card">
+          <div class="exp-head">
+            <a class="exp-logo-link" href="https://www.atlascopco.com/" data-company-link aria-label="Atlas Copco website">
+              <img class="exp-logo" src="images/atlas-copco-logo.jpg" alt="Atlas Copco logo" loading="lazy" />
+            </a>
+
+            <div class="exp-head-text">
+              <h3 class="exp-company">
+                <a class="exp-company-link" href="https://www.atlascopco.com/" data-company-link>
+                  Atlas Copco
+                </a>
+              </h3>
+
+              <div class="exp-role">Software Engineer</div>
+
+              <div class="exp-skill-row" aria-label="Skills gained">
+                <span class="exp-skill">RFID</span>
+                <span class="exp-skill">Django/Flask</span>
+                <span class="exp-skill">Industrial integrations</span>
+                <span class="exp-skill">CI/CD</span>
+                <span class="exp-skill">Deployment</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="exp-abstract">
+            Built traceability + inspection tooling that connects hardware data to usable dashboards,
+            with a focus on integration discipline and deployment repeatability.
+          </p>
+
+          <div class="exp-collapsible" data-collapsed="true">
+            <div class="exp-details collapsible-content" aria-hidden="true">
+              <ul class="exp-bullets">
+                <li>Implemented RFID-driven tracking workflows and integrations for traceability.</li>
+                <li>Built web services and UI flows for inventory/QA tooling with reliability-first practices.</li>
+                <li>Introduced CI/CD automation and testing discipline to improve repeatability across releases.</li>
+              </ul>
+
+              <p class="exp-result">
+                <span class="exp-result-key">Result:</span>
+                More traceable, deployable workflows replacing manual/spreadsheet processes.
+              </p>
+            </div>
+
+            <button
+              class="btn btn-ghost btn-collapsible exp-toggle"
+              type="button"
+              data-exp-toggle
+              data-more="Show more"
+              data-less="Show less"
+              aria-expanded="false">
+              Show more <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ApTSi -->
+      <article class="timeline-item" data-animate="up">
+        <div class="timeline-side">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-date">Jan 2023 – Dec 2023</div>
+        </div>
+
+        <div class="timeline-content exp-card">
+          <div class="exp-head">
+            <a class="exp-logo-link" href="https://ap-tech-solns.com/" data-company-link aria-label="ApTSi website">
+              <img class="exp-logo" src="images/aptsi-logo.png" alt="ApTSi logo" loading="lazy" />
+            </a>
+
+            <div class="exp-head-text">
+              <h3 class="exp-company">
+                <a class="exp-company-link" href="https://ap-tech-solns.com/" data-company-link>
+                  ApTSi
+                </a>
+              </h3>
+
+              <div class="exp-role">Software Research Intern</div>
+
+              <div class="exp-skill-row" aria-label="Skills gained">
+                <span class="exp-skill">Zero Trust</span>
+                <span class="exp-skill">Frontend</span>
+                <span class="exp-skill">UX</span>
+                <span class="exp-skill">Security tooling</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="exp-abstract">
+            Improved security tooling UX by translating research into practical flows—clearer operator workflows,
+            better usability, and more consistent dashboards.
+          </p>
+
+          <div class="exp-collapsible" data-collapsed="true">
+            <div class="exp-details collapsible-content" aria-hidden="true">
+              <ul class="exp-bullets">
+                <li>Built frontend components and improved usability for security workflows.</li>
+                <li>Researched and applied Zero Trust concepts to strengthen security frameworks.</li>
+              </ul>
+
+              <p class="exp-result">
+                <span class="exp-result-key">Result:</span>
+                Improved usability and clearer security workflows for operators.
+              </p>
+            </div>
+
+            <button
+              class="btn btn-ghost btn-collapsible exp-toggle"
+              type="button"
+              data-exp-toggle
+              data-more="Show more"
+              data-less="Show less"
+              aria-expanded="false">
+              Show more <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- TransfusioTrack -->
+      <article class="timeline-item" data-animate="up">
+        <div class="timeline-side">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-date">Jun 2023 – Present</div>
+        </div>
+
+        <div class="timeline-content exp-card">
+          <div class="exp-head">
+            <a class="exp-logo-link" href="#" data-company-link aria-label="TransfusioTrack link">
+              <img class="exp-logo" src="images/TT-logo.png" alt="TransfusioTrack logo" loading="lazy" />
+            </a>
+
+            <div class="exp-head-text">
+              <h3 class="exp-company">
+                <a class="exp-company-link" href="#" data-company-link>
+                  TransfusioTrack
+                </a>
+              </h3>
+
+              <div class="exp-role">Co-Founder</div>
+
+              <div class="exp-skill-row" aria-label="Skills gained">
+                <span class="exp-skill">Flask APIs</span>
+                <span class="exp-skill">MongoDB</span>
+                <span class="exp-skill">Docker</span>
+                <span class="exp-skill">AWS/Render</span>
+                <span class="exp-skill">Observability</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="exp-abstract">
+            Built and shipped backend services for real logistics workflows—clean APIs, predictable data performance,
+            and production visibility (logs/metrics) from day one.
+          </p>
+
+          <div class="exp-collapsible" data-collapsed="true">
+            <div class="exp-details collapsible-content" aria-hidden="true">
+              <ul class="exp-bullets">
+                <li>Designed REST microservices with clean schemas/validation and role-aware workflows.</li>
+                <li>Improved data performance via indexing + query tuning for predictable tail latency.</li>
+                <li>Dockerized deployments and added structured logs/metrics for debugging and regression checks.</li>
+              </ul>
+
+              <p class="exp-result">
+                <span class="exp-result-key">Result:</span>
+                Production-ready services and operational visibility supporting day-to-day logistics.
+              </p>
+            </div>
+
+            <button
+              class="btn btn-ghost btn-collapsible exp-toggle"
+              type="button"
+              data-exp-toggle
+              data-more="Show more"
+              data-less="Show less"
+              aria-expanded="false">
+              Show more <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- PROJECTS (clean tab cards + hidden details until clicked) -->
+<section id="projects" class="section section-alt projects-collapsed" data-projects-section>
+  <div class="container">
+    <div class="section-header" data-animate="up">
+      <h2>Projects</h2>
+      <p>Work where hardware, AI, and software all had to agree.</p>
+    </div>
+
+    <!-- (New) Expand overlay lives inside clip, but we also provide a slim collapse control when expanded -->
+    <div class="projects-ui">
+
+      <!-- Filters (hidden until expanded via CSS) -->
+      <div class="project-filters" data-animate="up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="embedded">Embedded &amp; Firmware</button>
+        <button class="filter-btn" data-filter="ai-ml">AI / ML &amp; Vision</button>
+        <button class="filter-btn" data-filter="web">Web &amp; Cloud</button>
+      </div>
+
+      <!-- (New) Collapse bar shown only when expanded -->
+      <div class="projects-collapsebar" aria-hidden="true">
+        <button class="projects-expand-btn projects-expand-btn--subtle"
+                type="button"
+                data-projects-expand-btn
+                data-more="Show all projects"
+                data-less="Show fewer projects"
+                aria-expanded="false">
+          Show fewer projects <i class="fa-solid fa-chevron-up"></i>
+        </button>
+      </div>
+
+      <!-- (New) Clip wrapper controls "preview vs full" without touching your cards -->
+      <div class="projects-grid-clip" data-projects-clip>
+        <div class="projects-grid">
+
+          <!-- =========================
+               YOUR 12 PROJECT CARDS
+               (UNCHANGED CONTENT)
+               ========================= -->
+
+          <!-- 1) Synaptics Wearable Navigation -->
+          <article class="project-card project-card--tab" data-category="embedded ai-ml" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">Wearable Navigation for Visually-Impaired Users</h3>
+
+                <a class="btn btn-project-ghost btn-company btn-company--synaptics"
+                   href="https://www.synaptics.com/" target="_blank" rel="noopener">
+                  <span class="company-badge" aria-hidden="true">
+                    <img src="images/synaptics-logo.png" alt="">
+                  </span>
+                  <span class="company-name">Synaptics</span>
+                </a>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Edge AI</span>
+                <span class="project-badge">Real-Time</span>
+                <span class="project-badge">Sensor Fusion</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/synaptics_Incorporated.png" target="_blank" rel="noopener">
+              <img src="images/synaptics_Incorporated.png" alt="Wearable navigation system on Synaptics Astra SL1680" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-microchip"></i> Astra SL1680</span>
+              <span class="tech-chip"><i class="fa-brands fa-linux"></i> Yocto Linux</span>
+              <!-- <span class="tech-chip"><i class="fa-solid fa-camera"></i> V4L2 (IMX477)</span> -->
+              <span class="tech-chip"><i class="fa-solid fa-brain"></i> YOLOv8 → TFLite → Synap.rt</span>
+            </div>
+
+            <p class="project-summary">
+              Embedded wearable navigation system on Synaptics Astra (SL1680) providing stable guidance using on-device NPU vision
+              plus sensor-driven runtime logic and production-style robustness.
+            </p>
+
+            <div class="project-actions">
+              <div class="project-buttons">
+                <a class="btn btn-project-primary"
+                   href="https://github.com/prateeksha9/wearable-navigation" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Runtime architecture:</span> concurrent capture → preprocess/infer → control pipeline with bounded queues + backpressure to keep latency predictable.</li>
+                <li><span class="dkey">Yocto bring-up:</span> headless deployment; long-running C++/Python services designed for watchdog-friendly operation.</li>
+                <li><span class="dkey">Camera robustness:</span> V4L2 acquisition with frame validation + drop policies to prevent buffer growth and keep memory stable.</li>
+                <li><span class="dkey">Edge inference:</span> optimized pre/post-processing and batching; used NEON/SIMD where relevant for tight power/latency budgets.</li>
+                <li><span class="dkey">Sensor integration:</span> ultrasonic + IMU fall detection integrated into the controller with structured logs/metrics for field debugging.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 2) TransfusioTrack -->
+          <article class="project-card project-card--tab" data-category="web" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">TransfusioTrack — Blood-Bag Logistics Platform</h3>
+
+                <a class="btn btn-project-ghost btn-company btn-company--tt"
+                   href="https://www.transfusiotrack.com/" target="_blank" rel="noopener">
+                  <span class="company-badge" aria-hidden="true">
+                    <img src="images/TT-logo.png" alt="">
+                  </span>
+                  <span class="company-name">TransfusioTrack</span>
+                </a>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Backend</span>
+                <span class="project-badge">Cloud</span>
+                <span class="project-badge">Observability</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/TransfusioTrack_BloodBagDelivery.png" target="_blank" rel="noopener">
+              <img src="images/TransfusioTrack_BloodBagDelivery.png" alt="TransfusioTrack platform" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-brands fa-python"></i> Flask</span>
+              <span class="tech-chip"><i class="fa-solid fa-database"></i> MongoDB</span>
+              <span class="tech-chip"><i class="fa-brands fa-docker"></i> Docker</span>
+              <span class="tech-chip"><i class="fa-solid fa-cloud"></i> AWS/Render</span>
+            </div>
+
+            <p class="project-summary">
+              Full-stack logistics system that tracks blood bags end-to-end with operational tooling, reliable APIs,
+              and production-style logging/monitoring for stable deployments.
+            </p>
+
+            <div class="project-actions">
+              <div class="project-buttons">
+                <a class="btn btn-project-primary"
+                   href="https://github.com/yashingle1207/BloodBagDelivery" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Services:</span> Flask REST APIs with clean schemas, validation, and role-aware workflows.</li>
+                <li><span class="dkey">Data performance:</span> MongoDB indexing + query tuning; focused on predictable tail latency under load.</li>
+                <li><span class="dkey">Productionization:</span> Dockerized deployment + basic CI discipline; structured logs/metrics for debugging and regression checks.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 3) Envipco RVM Vision + Barcode Ring -->
+          <article class="project-card project-card--tab" data-category="embedded ai-ml" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">Reverse-Vending Machine Vision + Barcode Ring</h3>
+
+                <a class="btn btn-project-ghost btn-company btn-company--envipco"
+                   href="https://www.envipco.com/" target="_blank" rel="noopener">
+                  <span class="company-badge" aria-hidden="true">
+                    <img src="images/envipco-logo.png" alt="">
+                  </span>
+                  <span class="company-name">Envipco</span>
+                </a>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">On-Device CV</span>
+                <span class="project-badge">Industrial</span>
+                <span class="project-badge">Throughput</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/envipco_vision_barcode.png" target="_blank" rel="noopener">
+              <img src="images/envipco_vision_barcode.png" alt="Reverse-vending machine vision + barcode ring" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-camera"></i> OpenMV AE3</span>
+              <span class="tech-chip"><i class="fa-solid fa-brain"></i> TFLite + NMS</span>
+              <span class="tech-chip"><i class="fa-solid fa-qrcode"></i> 360° Barcode Ring</span>
+              <span class="tech-chip"><i class="fa-solid fa-plug"></i> UART + CAN</span>
+            </div>
+
+            <p class="project-summary">
+              On-device vision system that detects bottle/hand/logo events and improves barcode first-read performance
+              using a multi-imager ring workflow and repeatable validation tooling.
+            </p>
+
+            <div class="project-actions">
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">On-device detection:</span> YOLOv8-style TFLite inference + NMS; produced compact events (bottle/hand/logo + barcode ROI) for the main controller FSM.</li>
+                <li><span class="dkey">Multi-imager ring:</span> evaluated 5–7 camera/scanner configurations; measured coverage gaps and first-decode latency to guide selection.</li>
+                <li><span class="dkey">Industrial robustness:</span> tuned thresholds, hard negatives, and edge cases for messy lighting and real user interactions.</li>
+                <li><span class="dkey">Tooling:</span> Python multi-serial orchestration + structured logging to standardize runs and generate KPI-style reports.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 4) Production Motor Tester (STM32) -->
+          <article class="project-card project-card--tab" data-category="embedded" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">Production Motor Tester Firmware</h3>
+
+                <a class="btn btn-project-ghost btn-company btn-company--envipco"
+                   href="https://www.envipco.com/" target="_blank" rel="noopener">
+                  <span class="company-badge" aria-hidden="true">
+                    <img src="images/envipco-logo.png" alt="">
+                  </span>
+                  <span class="company-name">Envipco</span>
+                </a>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Firmware</span>
+                <span class="project-badge">ADC/DMA</span>
+                <span class="project-badge">Fixed-Point DSP</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/envipco_motor.png" target="_blank" rel="noopener">
+              <img src="images/envipco_motor.png" alt="STM32 production motor tester firmware" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-microchip"></i> STM32</span>
+              <span class="tech-chip"><i class="fa-solid fa-wave-square"></i> Timer ADC + DMA</span>
+              <span class="tech-chip"><i class="fa-solid fa-plug"></i> RS-485/Modbus + CAN</span>
+            </div>
+
+            <p class="project-summary">
+              Deterministic firmware pipeline that converts noisy motor current waveforms into stable PASS/FAIL decisions
+              for production qualification and factory integration.
+            </p>
+
+            <div class="project-actions">
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Acquisition:</span> timer-triggered ADC with DMA into bounded buffers for consistent sampling.</li>
+                <li><span class="dkey">Signal features:</span> fixed-point filtering + calibrated metrics (RMS/inrush/features) for repeatable thresholds.</li>
+                <li><span class="dkey">Factory integration:</span> control + reporting over RS-485/Modbus and CAN; debug hooks for test/bring-up.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 5) Atlas Copco — RFID Inventory Management -->
+          <article class="project-card project-card--tab" data-category="web embedded" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">RFID-Enabled Inventory Management</h3>
+
+                <a class="btn btn-project-ghost btn-company btn-company--atlas"
+                   href="https://www.atlascopco.com/" target="_blank" rel="noopener">
+                  <span class="company-badge" aria-hidden="true">
+                    <img src="images/atlas-copco-logo.jpg" alt="">
+                  </span>
+                  <span class="company-name">Atlas Copco</span>
+                </a>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Industrial</span>
+                <span class="project-badge">Full-Stack</span>
+                <span class="project-badge">Data Pipelines</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/atlas_copco_rfid_inventory_management.png" target="_blank" rel="noopener">
+              <img src="images/atlas_copco_rfid_inventory_management.png" alt="RFID inventory management system for factory workflows" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-brands fa-react"></i> React</span>
+              <span class="tech-chip"><i class="fa-brands fa-python"></i> Django REST</span>
+              <span class="tech-chip"><i class="fa-solid fa-database"></i> MySQL (EXPLAIN/Indexes)</span>
+              <span class="tech-chip"><i class="fa-solid fa-layer-group"></i> RQ Workers</span>
+              <span class="tech-chip"><i class="fa-solid fa-industry"></i> Kepware (OPC/Modbus)</span>
+              <span class="tech-chip"><i class="fa-solid fa-code"></i> Legacy Perl ETL</span>
+            </div>
+
+            <p class="project-summary">
+              Factory inventory system that replaces spreadsheets with traceable RFID/barcode workflows and live station/tool data.
+              Delivered production backend + async ingestion + tuned reporting queries.
+            </p>
+
+            <div class="project-actions">
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">App:</span> React UI + Django REST with audit-friendly issue/return/procurement workflows.</li>
+                <li><span class="dkey">DB performance:</span> schema + query optimization (indexes, pagination, EXPLAIN-driven tuning) for stable SKU reporting.</li>
+                <li><span class="dkey">Async ingestion:</span> validate → transform → load pipeline using RQ worker pools for high-volume updates.</li>
+                <li><span class="dkey">Integrations:</span> station/tool signals via Kepware gateway (OPC/Modbus) + legacy Perl normalization/batch exports.</li>
+                <li><span class="dkey">Production discipline:</span> Dockerized services and CI/CD with tests + automated logs/artifact capture for repeatable releases.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 6) Atlas Copco — RFID Reader Firmware -->
+          <article class="project-card project-card--tab" data-category="embedded" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">RFID Reader Firmware (PHY/MAC + RF Calibration)</h3>
+
+                <a class="btn btn-project-ghost btn-company btn-company--atlas"
+                   href="https://www.atlascopco.com/" target="_blank" rel="noopener">
+                  <span class="company-badge" aria-hidden="true">
+                    <img src="images/atlas-copco-logo.jpg" alt="">
+                  </span>
+                  <span class="company-name">Atlas Copco</span>
+                </a>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Firmware</span>
+                <span class="project-badge">PHY/MAC</span>
+                <span class="project-badge">Real-Time</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/atlas_copco_rfid_firmware.png" target="_blank" rel="noopener">
+              <img src="images/atlas_copco_rfid_firmware.png" alt="RFID reader firmware: PHY/MAC, anti-collision, RF calibration" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-microchip"></i> Cortex-M + FreeRTOS</span>
+              <span class="tech-chip"><i class="fa-solid fa-signal"></i> Frames + CRC</span>
+              <span class="tech-chip"><i class="fa-solid fa-diagram-project"></i> Anti-collision FSM</span>
+              <span class="tech-chip"><i class="fa-solid fa-bolt"></i> ISR/DMA (SPI/I²C/UART)</span>
+              <span class="tech-chip"><i class="fa-solid fa-tower-broadcast"></i> AGC / RSSI / Modulation</span>
+            </div>
+
+            <p class="project-summary">
+              Production-grade RFID reader firmware improving multi-tag reliability and read stability using deterministic PHY/MAC state machines,
+              collision handling, and RF front-end calibration under noise/EMI.
+            </p>
+
+            <div class="project-actions">
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">PHY/MAC core:</span> frame encode/decode + CRC validation with strict timeouts and deterministic transitions.</li>
+                <li><span class="dkey">Anti-collision:</span> inventory logic with collision handling, retries/backoff, and stable behavior during dense reads.</li>
+                <li><span class="dkey">RF calibration:</span> tuned modulation + AGC/RSSI thresholds and added quality gating to reduce false reads.</li>
+                <li><span class="dkey">Drivers + timing:</span> SPI/I²C/UART with ISR/DMA paths and bounded buffering to control jitter under load.</li>
+                <li><span class="dkey">Verification:</span> read-range and detuning tests + documented TX/RX procedures for repeatable bench QA.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 7) Atlas Copco — Vision Inspection System -->
+          <article class="project-card project-card--tab" data-category="ai-ml embedded" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">On-Device Vision Inspection + PLC Integration</h3>
+
+                <a class="btn btn-project-ghost btn-company btn-company--atlas"
+                   href="https://www.atlascopco.com/" target="_blank" rel="noopener">
+                  <span class="company-badge" aria-hidden="true">
+                    <img src="images/atlas-copco-logo.jpg" alt="">
+                  </span>
+                  <span class="company-name">Atlas Copco</span>
+                </a>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Vision</span>
+                <span class="project-badge">Edge Deployment</span>
+                <span class="project-badge">Industrial</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/atlas_copco_vision_system.png" target="_blank" rel="noopener">
+              <img src="images/atlas_copco_vision_system.png" alt="On-device vision inspection system with real-time pass/fail outputs" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-database"></i> Dataset Ops</span>
+              <span class="tech-chip"><i class="fa-solid fa-brain"></i> PyTorch Training</span>
+              <span class="tech-chip"><i class="fa-solid fa-camera"></i> Real-time Inference</span>
+              <span class="tech-chip"><i class="fa-solid fa-industry"></i> PLC / Line Controller</span>
+              <span class="tech-chip"><i class="fa-brands fa-docker"></i> Docker + CI</span>
+            </div>
+
+            <p class="project-summary">
+              Built and deployed an on-device vision inspection + control system that validates fixture/part correctness per assembly stage.
+              Delivered real-time pass/fail outputs integrated with the line controller for hands-free QA.
+            </p>
+
+            <div class="project-actions">
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">End-to-end ML:</span> data capture/labeling + hard-negative mining, training/eval, export, and edge packaging.</li>
+                <li><span class="dkey">Real-time pipeline:</span> live stream → preprocess → infer → postprocess with deterministic station-level decisions.</li>
+                <li><span class="dkey">Controls integration:</span> PLC/line-controller outputs to gate progression and eliminate manual checks.</li>
+                <li><span class="dkey">Deployment discipline:</span> versioned releases + Docker + CI smoke checks; FPS/latency monitoring and rollback support.</li>
+                <li><span class="dkey">On-site tuning:</span> validated lighting/motion variability; tuned thresholds to reduce false rejects while maintaining QA constraints.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 8) Real-Time Canny Edge Detector -->
+          <article class="project-card project-card--tab" data-category="embedded ai-ml" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">Real-Time Canny Edge Detector (C/C++ + DSP)</h3>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Real-Time</span>
+                <span class="project-badge">DSP</span>
+                <span class="project-badge">Optimization</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/canny_edge_detector.png" target="_blank" rel="noopener">
+              <img src="images/canny_edge_detector.png" alt="Real-time Canny edge detector pipeline with stage timing and throughput monitoring" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-code"></i> C/C++</span>
+              <span class="tech-chip"><i class="fa-brands fa-linux"></i> PREEMPT-RT</span>
+              <span class="tech-chip"><i class="fa-solid fa-microchip"></i> ARM NEON SIMD</span>
+              <span class="tech-chip"><i class="fa-solid fa-magnifying-glass-chart"></i> gprof Profiling</span>
+            </div>
+
+            <p class="project-summary">
+              Built and optimized a streaming Canny edge-detection pipeline with deterministic timing goals.
+              Focused on throughput/latency bottlenecks using profiling, parallel stages, and CPU-friendly memory access patterns.
+            </p>
+
+            <div class="project-actions">
+              <div class="project-buttons">
+                <a class="btn btn-project-primary"
+                   href="https://github.com/yashingle1207/Canny-Edge-Detection" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Pipeline:</span> Gaussian blur → gradients → magnitude → NMS → hysteresis, implemented as a streaming C/C++ pipeline.</li>
+                <li><span class="dkey">Real-time target:</span> optimized to sustain real-time throughput (e.g., 30 FPS @ 1080p) within a fixed latency budget on PREEMPT-RT.</li>
+                <li><span class="dkey">Optimization:</span> ARM NEON SIMD, cache-aware tiling, and POSIX threads to reduce per-frame compute time.</li>
+                <li><span class="dkey">Profiling-driven:</span> used gprof to identify hot stages; parallelized blur and reduced expensive per-pixel operations in bottlenecks.</li>
+                <li><span class="dkey">Determinism:</span> modeled worst-case timing and validated stable behavior under continuous multi-frame runs.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 9) Autonomous Rover -->
+          <article class="project-card project-card--tab" data-category="embedded ai-ml" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">Autonomous Rover Motion Planning + Control (ROS)</h3>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">ROS1</span>
+                <span class="project-badge">Planning</span>
+                <span class="project-badge">Control</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/autonomous_rover.png" target="_blank" rel="noopener">
+              <img src="images/autonomous_rover.png" alt="Autonomous rover planning and control" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-diagram-project"></i> RRT Planner</span>
+              <span class="tech-chip"><i class="fa-solid fa-gear"></i> PID Control</span>
+              <span class="tech-chip"><i class="fa-solid fa-map"></i> Occupancy Grid</span>
+              <span class="tech-chip"><i class="fa-solid fa-display"></i> RViz/Gazebo</span>
+            </div>
+
+            <p class="project-summary">
+              ROS navigation stack that plans collision-free paths and tracks trajectories using closed-loop control.
+              Built a clean tuning workflow using RViz/Gazebo with repeatable validation runs.
+            </p>
+
+            <div class="project-actions">
+              <div class="project-buttons">
+                <a class="btn btn-project-primary"
+                   href="https://github.com/yashingle1207/Autonomous-Rover" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Planning:</span> global RRT path generation with collision checks against an occupancy grid.</li>
+                <li><span class="dkey">Control:</span> PID trajectory tracking using odometry feedback to reduce overshoot and steady-state error.</li>
+                <li><span class="dkey">ROS tooling:</span> TF hygiene + visualization workflow in RViz; simulation validation in Gazebo.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 10) LightSwarm -->
+          <article class="project-card project-card--tab" data-category="embedded web" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">LightSwarm (ESP8266 + Raspberry Pi)</h3>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Distributed</span>
+                <span class="project-badge">IoT</span>
+                <span class="project-badge">Failover</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/light_swarm.png" target="_blank" rel="noopener">
+              <img src="images/light_swarm.png" alt="LightSwarm distributed IoT lighting" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-wifi"></i> ESP8266</span>
+              <span class="tech-chip"><i class="fa-brands fa-raspberry-pi"></i> Raspberry Pi Hub</span>
+              <span class="tech-chip"><i class="fa-solid fa-network-wired"></i> UDP Messaging</span>
+              <span class="tech-chip"><i class="fa-solid fa-clipboard-list"></i> Logging/Monitoring</span>
+            </div>
+
+            <p class="project-summary">
+              Multi-node lighting swarm that stays stable during joins/failures using leader election, lightweight UDP messaging,
+              and field-friendly diagnostics for debugging and reliability.
+            </p>
+
+            <div class="project-actions">
+              <div class="project-buttons">
+                <a class="btn btn-project-primary"
+                   href="https://github.com/yashingle1207/LightSwarm-IoT-System-ESP8266-and-Raspberry-Pi-with-Node-RED-Integration"
+                   target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Topology:</span> ESP8266 nodes coordinated by a Raspberry Pi hub with decentralized behavior.</li>
+                <li><span class="dkey">Protocol:</span> compact UDP packets with sequence control; resilient to packet loss and noisy networks.</li>
+                <li><span class="dkey">Resilience:</span> leader election + failover during node joins/drops to keep the swarm stable.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 11) AI Music Recommendation App -->
+          <article class="project-card project-card--tab" data-category="ai-ml web" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">AI Music Recommendation + Streaming App</h3>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Recommender</span>
+                <span class="project-badge">Android</span>
+                <span class="project-badge">Backend</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/music_recommendor_android.png" target="_blank" rel="noopener">
+              <img src="images/music_recommendor_android.png" alt="AI music recommendation app" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-brands fa-android"></i> Kotlin</span>
+              <span class="tech-chip"><i class="fa-brands fa-python"></i> Flask APIs</span>
+              <span class="tech-chip"><i class="fa-solid fa-magnifying-glass"></i> KNN + Cosine Similarity</span>
+              <span class="tech-chip"><i class="fa-solid fa-user"></i> Firebase Auth</span>
+            </div>
+
+            <p class="project-summary">
+              Content-based recommendation system that generates personalized playlists using track features and listening history,
+              served through an Android app with a backend API layer.
+            </p>
+
+            <div class="project-actions">
+              <div class="project-buttons">
+                <a class="btn btn-project-primary"
+                   href="https://github.com/yashingle1207/Music_recommendation" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Recommender:</span> similarity search using feature vectors/embeddings with KNN and cosine distance.</li>
+                <li><span class="dkey">App:</span> Kotlin UI with authenticated sessions and playlist browsing.</li>
+                <li><span class="dkey">Service:</span> Flask endpoints for recommendations + track metadata; clean request/response contracts.</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 12) LSTM Stock Forecasting -->
+          <article class="project-card project-card--tab" data-category="ai-ml" data-animate="up">
+            <header class="project-head">
+              <div class="project-head-top">
+                <h3 class="project-title">LSTM Stock-Price Forecasting Pipeline</h3>
+              </div>
+
+              <div class="project-badges" aria-label="Project tags">
+                <span class="project-badge">Time Series</span>
+                <span class="project-badge">Deep Learning</span>
+                <span class="project-badge">Evaluation</span>
+              </div>
+            </header>
+
+            <a class="project-media" href="images/LSTM_stock_predection.png" target="_blank" rel="noopener">
+              <img src="images/LSTM_stock_predection.png" alt="LSTM stock forecasting pipeline" loading="lazy" />
+            </a>
+
+            <div class="project-tech" aria-label="Key technologies">
+              <span class="tech-chip"><i class="fa-solid fa-chart-line"></i> Indicators (RSI/MA)</span>
+              <span class="tech-chip"><i class="fa-solid fa-brain"></i> Stacked LSTM</span>
+              <span class="tech-chip"><i class="fa-solid fa-scale-balanced"></i> RMSE/MAE</span>
+              <span class="tech-chip"><i class="fa-solid fa-chart-simple"></i> Matplotlib</span>
+            </div>
+
+            <p class="project-summary">
+              End-to-end forecasting workflow that engineers technical indicators and trains stacked LSTMs with clear metrics.
+              Includes clean visual validation for sanity checks and comparison runs.
+            </p>
+
+            <div class="project-actions">
+              <div class="project-buttons">
+                <a class="btn btn-project-primary"
+                   href="https://github.com/yashingle1207/Stock-Price-Prediction---LSTM" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+              </div>
+
+              <button class="btn btn-project-toggle" type="button"
+                      data-project-toggle data-more="Show details" data-less="Hide details"
+                      aria-expanded="false">
+                Show details <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+
+            <div class="project-details" aria-hidden="true">
+              <ul class="details-list">
+                <li><span class="dkey">Feature engineering:</span> RSI, moving averages, percent-change signals, and windowed sequences for supervised learning.</li>
+                <li><span class="dkey">Training:</span> stacked LSTM with dropout/early stopping and tracked learning curves for stability.</li>
+                <li><span class="dkey">Evaluation:</span> RMSE/MAE reporting + plots for verification and model comparisons.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- (New) Glass overlay button shown only in collapsed state -->
+        <div class="projects-expand-overlay" aria-hidden="false">
+          <button class="projects-expand-btn"
+                  type="button"
+                  data-projects-expand-btn
+                  data-more="Show all projects"
+                  data-less="Show fewer projects"
+                  aria-expanded="false">
+            Show all projects <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <!-- <div class="projects-expand-meta">12 projects • Filters available after expanding</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- EDUCATION -->
+<section id="education" class="section section-alt">
+  <div class="container">
+    <div class="section-header" data-animate="up">
+      <h2>Education</h2>
+    </div>
+
+    <div class="edu-v4-grid">
+
+      <!-- LEFT: Degrees -->
+      <div class="edu-v4-left" data-animate="left">
+
+        <!-- UCI -->
+        <article class="edu-v4-card">
+          <a class="edu-v4-logoLink" href="https://www.uci.edu/" target="_blank" rel="noopener" aria-label="Open UC Irvine website">
+            <span class="edu-v4-logoWrap">
+              <img class="edu-v4-logo" src="images/uci-logo.jpg" alt="UC Irvine logo" loading="lazy" />
+            </span>
+          </a>
+
+          <div class="edu-v4-body">
+            <a class="edu-v4-school" href="https://www.uci.edu/" target="_blank" rel="noopener">
+              University of California, Irvine
+            </a>
+
+            <div class="edu-v4-degree">
+              Master of Embedded &amp; Cyber-Physical Systems
+              <span class="edu-v4-degreeNote">(Master’s)</span>
+            </div>
+
+            <div class="edu-v4-subrow">
+              <span class="edu-v4-duration">Sep 2024 – Dec 2025 (Graduated)</span>
+              <span class="edu-v4-loc">Irvine, CA, USA</span>
+            </div>
+
+            <div class="edu-v4-gpaRow">
+              <!-- <span class="edu-v4-gpaLabel">GPA</span> -->
+              <span class="edu-v4-gpaGlow">
+                <span class="edu-v4-gpaValue">GPA 4.0 / 4.0</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- MGM -->
+        <article class="edu-v4-card">
+          <a class="edu-v4-logoLink" href="https://www.jnec.org/" target="_blank" rel="noopener" aria-label="Open MGM JNEC website">
+            <span class="edu-v4-logoWrap edu-v4-logoWrap--white">
+              <img class="edu-v4-logo edu-v4-logo--tight" src="images/mgm-jnec-logo.jpg" alt="MGM JNEC logo" loading="lazy" />
+            </span>
+          </a>
+
+          <div class="edu-v4-body">
+            <a class="edu-v4-school" href="https://www.jnec.org/" target="_blank" rel="noopener">
+              MGM’s Jawaharlal Nehru Engineering College
+            </a>
+
+            <div class="edu-v4-degree">
+              B.Tech – Computer Science with AI Honors
+              <span class="edu-v4-degreeNote">(Bachelor’s)</span>
+            </div>
+
+            <div class="edu-v4-subrow">
+              <span class="edu-v4-duration">Aug 2020 – Jul 2024</span>
+              <span class="edu-v4-loc">Maharashtra, India</span>
+            </div>
+
+            <div class="edu-v4-gpaRow">
+              <!-- <span class="edu-v4-gpaLabel">CGPA</span> -->
+              <span class="edu-v4-gpaGlow">
+                <span class="edu-v4-gpaValue">CGPA 9.16 / 10</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- SGVU -->
+        <article class="edu-v4-card">
+          <a class="edu-v4-logoLink" href="https://www.gyanvihar.org/" target="_blank" rel="noopener" aria-label="Open SGVU website">
+            <span class="edu-v4-logoWrap edu-v4-logoWrap--white">
+              <img class="edu-v4-logo edu-v4-logo--tight" src="images/sgvu_logo.jpg" alt="Suresh Gyan Vihar University logo" loading="lazy" />
+            </span>
+          </a>
+
+          <div class="edu-v4-body">
+            <a class="edu-v4-school" href="https://www.gyanvihar.org/" target="_blank" rel="noopener">
+              Suresh Gyan Vihar University
+            </a>
+
+            <div class="edu-v4-degree">
+              Bachelor of Business Administration (BBA)
+              <span class="edu-v4-degreeNote">(Bachelor’s)</span>
+            </div>
+
+            <div class="edu-v4-subrow">
+              <span class="edu-v4-duration">Sep 2020 – Sep 2023</span>
+              <span class="edu-v4-loc">Jaipur, India</span>
+            </div>
+
+            <div class="edu-v4-gpaRow">
+              <!-- <span class="edu-v4-gpaLabel">CGPA</span> -->
+              <span class="edu-v4-gpaGlow">
+                <span class="edu-v4-gpaValue"> CGPA 8.1 / 10</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- RIGHT: Coursework -->
+      <aside class="edu-v4-right" data-animate="right">
+        <article class="edu-v4-courseCard">
+          <h3 class="edu-v4-courseTitle">Selected Coursework</h3>
+
+          <div class="edu-v4-courseCols">
+            <div class="edu-v4-courseCol">
+              <h4 class="edu-v4-courseH">Computer Science &amp; AI</h4>
+              <div class="edu-v4-chips" role="list">
+                <span class="edu-v4-chip" role="listitem">Data Structures &amp; Algorithms</span>
+                <span class="edu-v4-chip" role="listitem">Object-Oriented Programming</span>
+                <span class="edu-v4-chip" role="listitem">Operating Systems</span>
+                <span class="edu-v4-chip" role="listitem">Distributed Systems</span>
+                <span class="edu-v4-chip" role="listitem">Computer Architecture</span>
+                <span class="edu-v4-chip" role="listitem">Computer Networks</span>
+                <span class="edu-v4-chip" role="listitem">Compiler Design</span>
+                <span class="edu-v4-chip" role="listitem">Machine Learning</span>
+                <span class="edu-v4-chip" role="listitem">Finite Automata Theory (FSM)</span>
+                <span class="edu-v4-chip" role="listitem">Database Systems</span>
+                <span class="edu-v4-chip" role="listitem">Software Engineering</span>
+              </div>
+            </div>
+
+            <div class="edu-v4-courseCol">
+              <h4 class="edu-v4-courseH">Embedded &amp; CPS</h4>
+              <div class="edu-v4-chips" role="list">
+                <span class="edu-v4-chip" role="listitem">Embedded Systems Modelling</span>
+                <span class="edu-v4-chip" role="listitem">Control Systems</span>
+                <span class="edu-v4-chip" role="listitem">Wireless Sensor Networks</span>
+                <span class="edu-v4-chip" role="listitem">IoT Systems</span>
+                <span class="edu-v4-chip" role="listitem">I/O Interface Programming</span>
+                <span class="edu-v4-chip" role="listitem">Embedded Linux / Yocto</span>
+                <span class="edu-v4-chip" role="listitem">Real-Time &amp; Embedded Linux Concepts</span>
+                <span class="edu-v4-chip" role="listitem">Edge AI, Vision &amp; CPS</span>
+              </div>
+            </div>
+          </div>
+
+        </article>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Certifications -->
+
+<section id="certifications" class="section section-alt">
+  <div class="container">
+    <div class="section-header" data-animate="up">
+      <h2>Certifications</h2>
+      <p>Extra learning around AI and machine learning.</p>
+    </div>
+
+    <div class="cert-shell" data-animate="up">
+      <ul class="cert-grid" role="list">
+        <li class="cert-item">
+          <div class="cert-name">AI For Everyone</div>
+          <div class="cert-meta">DeepLearning.AI · Coursera · 2022</div>
+        </li>
+
+        <li class="cert-item">
+          <div class="cert-name">Introduction to Artificial Intelligence (AI)</div>
+          <div class="cert-meta">IBM · Coursera · 2022</div>
+        </li>
+
+        <li class="cert-item">
+          <div class="cert-name">Machine Learning Foundations: A Case Study Approach</div>
+          <div class="cert-meta">University of Washington · Coursera · 2022</div>
+        </li>
+
+        <li class="cert-item">
+          <div class="cert-name">Getting Started with AI using IBM Watson</div>
+          <div class="cert-meta">IBM · Coursera · 2022</div>
+        </li>
+
+        <li class="cert-item">
+          <div class="cert-name">Building AI Powered Chatbots Without Programming</div>
+          <div class="cert-meta">IBM · Coursera · 2022</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <div class="section-header" data-animate="up">
+      <h2>Contact</h2>
+      <p>Open to software, embedded, backend, and systems roles — happy to connect.</p>
+    </div>
+
+    <!-- CONTACT GRID (intro spans both columns + equal-height cards) -->
+    <div class="contact-v3">
+      <!-- Intro spans BOTH columns -->
+      <div class="contact-intro" data-animate="up">
+        <p >
+          Thanks for taking the time to check out my work. <br>If something here resonates: a project,
+          a system challenge, or a role you think I’d be a good fit for — I’d genuinely love to hear from you.
+         
+        </p>
+      </div>
+
+      <!-- LEFT: Form -->
+      <div class="contact-card contact-card--form" data-animate="left">
+        <h3 class="contact-card-title">Send a message</h3>
+        <p class="contact-card-sub">Tell me what you’re building and what you need help with.</p>
+
+        <form class="contact-form" action="https://formspree.io/f/xeeopyjd" method="POST">
+          <!-- Honeypot (spam trap) -->
+          <input type="text" name="_gotcha" class="hp-field" autocomplete="off" tabindex="-1" aria-hidden="true">
+
+          <!-- Optional: email subject -->
+          <input type="hidden" name="_subject" value="New message from yashingle.dev">
+
+          <label class="field">
+            <span>Name</span>
+            <input name="name" type="text" placeholder="Your name" required>
+          </label>
+
+          <label class="field">
+            <span>Email</span>
+            <input name="email" type="email" placeholder="you@example.com" required>
+          </label>
+
+          <label class="field">
+            <span>Message</span>
+            <textarea name="message" rows="6" placeholder="What are you working on? Any constraints or timelines?" required></textarea>
+          </label>
+
+          <div class="contact-form-actions">
+            <button class="btn btn-primary contact-submit" type="submit">
+              Send Message <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <span class="contact-mini">
+              Prefer email? <a href="mailto:yashingle1207@gmail.com">yashingle1207@gmail.com</a>
+            </span>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT: Profiles -->
+      <div class="contact-card contact-card--profiles" data-animate="right">
+        <h3 class="contact-card-title">Profiles</h3>
+        <p class="contact-card-sub">Quick links to my work and professional presence.</p>
+
+        <div class="profile-list">
+          <a class="profile-item" href="mailto:yashingle1207@gmail.com" aria-label="Email Yash">
+            <span class="profile-icon profile-icon--gmail">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+            <span class="profile-text">
+              <strong>Email</strong>
+              <small>yashingle1207@gmail.com</small>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+
+          <a class="profile-item" href="https://www.linkedin.com/in/yashingle1207/" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
+            <span class="profile-icon profile-icon--linkedin">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </span>
+            <span class="profile-text">
+              <strong>LinkedIn</strong>
+              <small>linkedin.com/in/yashingle1207</small>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+
+          <a class="profile-item" href="https://github.com/yashingle1207" target="_blank" rel="noopener" aria-label="GitHub Profile">
+            <span class="profile-icon profile-icon--github">
+              <i class="fa-brands fa-github"></i>
+            </span>
+            <span class="profile-text">
+              <strong>GitHub</strong>
+              <small>Projects + code</small>
+            </span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+
+          <div class="contact-meta-inline">
+            <span><i class="fa-solid fa-location-dot"></i> Irvine, CA · Open to relocation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-inner footer-v3">
+    <div class="footer-links">
+      <a href="mailto:yashingle1207@gmail.com" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/yashingle1207/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+
+      <a href="https://github.com/yashingle1207" target="_blank" rel="noopener" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+        <span>GitHub</span>
+      </a>
+    </div>
+
+    <div class="footer-copy">
+      <span>© <span id="year"></span> Yash Daniel Ingle. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- RESUME MODAL -->
+<div class="resume-modal" id="resumeModal" aria-hidden="true">
+  <div class="resume-backdrop" id="resumeBackdrop"></div>
+
+  <div class="resume-dialog" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+    <header class="resume-dialog-header">
+      <div class="resume-tabs">
+        <button class="resume-tab active" data-resume="embedded" aria-selected="true">
+          Embedded Systems
+        </button>
+        <button class="resume-tab" data-resume="fullstack" aria-selected="false">
+          Software Engineer/Full Stack
+        </button>
+      </div>
+      <button class="resume-close" id="resumeClose" aria-label="Close resume viewer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </header>
+
+    <div class="resume-dialog-body">
+      <div class="resume-info">
+        <!-- default content (will be replaced by JS on open/switch) -->
+        <h3 id="resumeModalTitle">Embedded Systems Resume</h3>
+        <p id="resumeModalDesc">
+          Embedded Linux (Yocto), C/C++ services/firmware, camera + sensor bring-up, real-time pipelines, and production validation/debugging.
+        </p>
+
+        <a id="resumeDownloadBtn" class="btn btn-primary" href="assets/resume/Yash_Ingle_Embedded.pdf" download>
+          <i class="fa-solid fa-download"></i> Download PDF
+        </a>
+      </div>
+
+      <div class="resume-frame-container">
+        <iframe id="resumeFrame" title="Resume preview" loading="lazy"></iframe>
+        <p class="resume-fallback">
+          If the PDF does not render,
+          <a id="resumeFallbackLink" href="assets/resume/Yash_Ingle_Embedded.pdf" target="_blank" rel="noopener">
+            open it in a new tab
+          </a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- JS -->
+  <script src="static/js/main.js"></script>
+  
+
+  <script>
+    (function () {
+      // ===== Footer year =====
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+  
+      // ===== Contact form (Formspree AJAX submit) =====
+      const form = document.querySelector("#contact .contact-form");
+      if (!form) return;
+  
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+  
+        const btn = form.querySelector(".contact-submit");
+        if (!btn) return;
+  
+        const original = btn.innerHTML;
+  
+        // remove old message if any
+        const old = form.querySelector(".contact-success, .contact-error");
+        if (old) old.remove();
+  
+        btn.disabled = true;
+        btn.innerHTML = "Sending...";
+  
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+  
+          const msg = document.createElement("p");
+  
+          if (res.ok) {
+            form.reset();
+            msg.className = "contact-success";
+            msg.textContent = "Thanks — message sent. I’ll get back to you soon.";
+          } else {
+            msg.className = "contact-error";
+            msg.textContent = "Something went wrong. Please email me directly.";
+          }
+  
+          // ✅ append message nicely under the button row
+          (form.querySelector(".contact-form-actions") || form).appendChild(msg);
+          setTimeout(() => msg.remove(), 6500);
+        } catch (err) {
+          const msg = document.createElement("p");
+          msg.className = "contact-error";
+          msg.textContent = "Network issue — please email me directly.";
+  
+          (form.querySelector(".contact-form-actions") || form).appendChild(msg);
+          setTimeout(() => msg.remove(), 6500);
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = original;
+        }
+      });
+    })();
+  </script>
+  
+  
+  
+</body>
+</html>
