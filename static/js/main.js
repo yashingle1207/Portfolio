@@ -1,5 +1,4 @@
-/* static/js/main.js (CLEAN — no duplicates) */
-
+/* static/js/main.js (CLEAN — single init, no duplicates) */
 (function () {
   // Helpers
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -36,7 +35,7 @@
     }
 
     // -----------------------------
-    // Theme toggle (dark/light)
+    // Theme toggle (dark/light) — safe if button is commented out
     // -----------------------------
     const themeToggle = $("#themeToggle");
     const THEME_KEY = "yi_theme";
@@ -84,7 +83,7 @@
     }
 
     // -----------------------------
-    // Resume modal (UPDATED labels + descriptions; no "Product")
+    // Resume modal
     // -----------------------------
     const resumeModal = $("#resumeModal");
     const resumeBackdrop = $("#resumeBackdrop");
@@ -107,18 +106,15 @@
       fullstack: {
         title: "Software Engineering Resume",
         desc:
-          "Backend + platform work: Python/Java APIs, databases (MySQL/MongoDB), worker queues, Docker, CI/CD, and reliability patterns (idempotency, retries, observability).",
+          "Backend + platform work: APIs, databases (MySQL/MongoDB), worker queues, Docker, CI/CD, and reliability patterns (retries, observability).",
         url: "assets/resume/Yash_Ingle_Fullstack.pdf",
       },
     };
-
-    let activeResumeKey = "embedded";
 
     function setResume(which = "embedded") {
       if (!resumeModal) return;
       const key = resumeMap[which] ? which : "embedded";
       const cfg = resumeMap[key];
-      activeResumeKey = key;
 
       if (resumeTitle) resumeTitle.textContent = cfg.title;
       if (resumeDesc) resumeDesc.textContent = cfg.desc;
@@ -129,7 +125,6 @@
       }
       if (resumeFallbackLink) resumeFallbackLink.href = cfg.url;
 
-      // Ensure iframe refresh when switching tabs
       if (resumeFrame) {
         resumeFrame.removeAttribute("src");
         resumeFrame.src = cfg.url;
@@ -173,6 +168,69 @@
     });
 
     // -----------------------------
+    // Contact form (Formspree AJAX) — robust + single source of truth
+    // -----------------------------
+    const contactForm = document.querySelector('#contact form.contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = contactForm.querySelector('.contact-submit');
+        const actionsRow = contactForm.querySelector('.contact-form-actions') || contactForm;
+
+        // remove old message if any
+        const old = contactForm.querySelector('.contact-success, .contact-error');
+        if (old) old.remove();
+
+        const original = btn ? btn.innerHTML : '';
+        if (btn) {
+          btn.disabled = true;
+          btn.innerHTML = 'Sending...';
+        }
+
+        try {
+          const res = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          const msg = document.createElement('p');
+
+          if (res.ok) {
+            contactForm.reset();
+            msg.className = 'contact-success';
+            msg.textContent = 'Thanks — message sent. I’ll get back to you soon.';
+          } else {
+            let text = 'Something went wrong. Please email me directly.';
+            try {
+              const data = await res.json();
+              if (data && data.errors && data.errors.length) {
+                text = data.errors.map(er => er.message).join(' ');
+              }
+            } catch (_) {}
+            msg.className = 'contact-error';
+            msg.textContent = text;
+          }
+
+          actionsRow.appendChild(msg);
+          setTimeout(() => msg.remove(), 6500);
+        } catch (err) {
+          const msg = document.createElement('p');
+          msg.className = 'contact-error';
+          msg.textContent = 'Network issue — please email me directly.';
+          actionsRow.appendChild(msg);
+          setTimeout(() => msg.remove(), 6500);
+        } finally {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = original;
+          }
+        }
+      });
+    }
+
+    // -----------------------------
     // PROJECTS (Filter + Details) — single handler
     // -----------------------------
     const projectsRoot = $("#projects");
@@ -190,7 +248,6 @@
         });
       };
 
-      // filter clicks
       filterButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
           filterButtons.forEach((b) => b.classList.remove("active"));
@@ -199,13 +256,11 @@
         });
       });
 
-      // toggle label update without duplicating text
       function setToggleLabel(btn, isOpen) {
         const more = btn.getAttribute("data-more") || "Show details";
         const less = btn.getAttribute("data-less") || "Hide details";
         const next = isOpen ? less : more;
 
-        // Update only the first text node (keep icon intact)
         let updated = false;
         btn.childNodes.forEach((n) => {
           if (!updated && n.nodeType === Node.TEXT_NODE) {
@@ -213,14 +268,11 @@
             updated = true;
           }
         });
-
-        // If no text node exists (rare), fallback safely:
         if (!updated) {
           btn.insertBefore(document.createTextNode(next + " "), btn.firstChild);
         }
       }
 
-      // details toggle (event delegation)
       projectsRoot.addEventListener("click", (e) => {
         const toggle = e.target.closest("[data-project-toggle]");
         if (!toggle) return;
@@ -237,16 +289,263 @@
         setToggleLabel(toggle, isOpen);
       });
 
-      // default
       applyFilter("all");
     }
 
     // -----------------------------
-    // Typewriter / rotating line (safe no-op unless element exists)
-    // Usage (HTML example):
-    // <span id="heroRotate"
-    //   data-type-rotate
-    //   data-phrases="I build low-latency perception pipelines.,I bring up boards + sensors end-to-end.,I ship production-ready tooling for hardware teams."></span>
+    // Hero typed rotator (#heroType) — fixed typo + reduced motion support
+    // -----------------------------
+    const heroType = document.getElementById("heroType");
+    if (heroType) {
+      const phrases = [
+        "embedded systems software (Linux + C/C++)",
+        "computer vision pipelines",
+        "backend APIs + cloud (Python, CI/CD, DB)",
+        "MCU firmware for hardware"
+      ];
+
+      const reduceMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduceMotion) {
+        heroType.textContent = phrases[0];
+      } else {
+        let i = 0;          // phrase index
+        let j = 0;          // char index
+        let deleting = false;
+
+        const TYPE_SPEED = 26;
+        const DELETE_SPEED = 17;
+        const HOLD_FULL = 1100;
+        const HOLD_EMPTY = 250;
+
+        function tick() {
+          const current = phrases[i];
+
+          if (!deleting) {
+            j++;
+            heroType.textContent = current.slice(0, j);
+
+            if (j >= current.length) {
+              deleting = true;
+              setTimeout(tick, HOLD_FULL);
+              return;
+            }
+            setTimeout(tick, TYPE_SPEED);
+          } else {
+            j--;
+            heroType.textContent = current.slice(0, j);
+
+            if (j <= 0) {
+              deleting = false;
+              i = (i + 1) % phrases.length;
+              setTimeout(tick, HOLD_EMPTY);
+              return;
+            }
+            setTimeout(tick, DELETE_SPEED);
+          }
+        }
+
+        heroType.textContent = "";
+        tick();
+      }
+    }
+
+    // -----------------------------
+    // Projects: Collapsed Preview + Expand/Collapse
+    // -----------------------------
+    (function projectsExpandCollapse() {
+      const section = document.querySelector("[data-projects-section]");
+      if (!section) return;
+
+      const clip = section.querySelector("[data-projects-clip]");
+      const buttons = Array.from(section.querySelectorAll("[data-projects-expand-btn]"));
+      if (!clip || buttons.length === 0) return;
+
+      const setBtnState = (expanded) => {
+        buttons.forEach((btn) => {
+          const more = btn.getAttribute("data-more") || "Show all projects";
+          const less = btn.getAttribute("data-less") || "Show fewer projects";
+          const next = expanded ? less : more;
+
+          btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+
+          const icon = btn.querySelector("i");
+          if (icon) icon.style.transform = expanded ? "rotate(180deg)" : "rotate(0deg)";
+
+          const textNode = Array.from(btn.childNodes).find((n) => n.nodeType === Node.TEXT_NODE);
+          if (textNode) {
+            textNode.nodeValue = next + " ";
+          } else {
+            btn.insertBefore(document.createTextNode(next + " "), btn.firstChild);
+          }
+        });
+      };
+
+      const firstRowBottom = (cards) => {
+        if (!cards.length) return 0;
+        const top0 = cards[0].offsetTop;
+        const rowCards = cards.filter((c) => c.offsetTop === top0);
+        const bottom = rowCards.reduce((m, c) => Math.max(m, c.offsetTop + c.offsetHeight), 0);
+        return bottom;
+      };
+
+      const syncHeights = () => {
+        const expandedH = clip.scrollHeight;
+        section.style.setProperty("--projects-expanded-h", expandedH + "px");
+
+        const cards = Array.from(section.querySelectorAll(".projects-grid > .project-card--tab"))
+          .filter((c) => c.offsetParent !== null);
+
+        if (!cards.length) {
+          section.style.setProperty("--projects-collapsed-h", Math.min(expandedH, 900) + "px");
+          return;
+        }
+
+        const rowBottom = firstRowBottom(cards);
+        const buffer = 140;
+        section.style.setProperty("--projects-collapsed-h", (rowBottom + buffer) + "px");
+      };
+
+      const expand = () => {
+        syncHeights();
+        section.classList.remove("projects-collapsed");
+        section.classList.add("projects-expanded");
+        setBtnState(true);
+        window.setTimeout(syncHeights, 450);
+      };
+
+      const collapse = () => {
+        syncHeights();
+        section.classList.remove("projects-expanded");
+        section.classList.add("projects-collapsed");
+        setBtnState(false);
+
+        const y = section.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      };
+
+      section.classList.add("projects-collapsed");
+      section.classList.remove("projects-expanded");
+      setBtnState(false);
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const isExpanded = section.classList.contains("projects-expanded");
+          if (isExpanded) collapse();
+          else expand();
+        });
+      });
+
+      window.addEventListener("resize", () => syncHeights());
+
+      section.addEventListener("click", (e) => {
+        const t = e.target.closest("[data-project-toggle], .filter-btn");
+        if (!t) return;
+        if (!section.classList.contains("projects-expanded")) return;
+        window.setTimeout(syncHeights, 350);
+      });
+
+      window.addEventListener("load", () => syncHeights());
+    })();
+
+    // -----------------------------
+    // EXPERIENCE: ensure company links open safely in a new tab
+    // -----------------------------
+    document.querySelectorAll('#experience a[data-company-link]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+
+    // -----------------------------
+    // EXPERIENCE — Show more / Show less
+    // -----------------------------
+    (function experienceToggle() {
+      const expRoot = document.getElementById("experience");
+      if (!expRoot) return;
+
+      function setToggleLabel(btn, isOpen) {
+        const more = btn.getAttribute("data-more") || "Show more";
+        const less = btn.getAttribute("data-less") || "Show less";
+        const next = isOpen ? less : more;
+
+        let updated = false;
+        btn.childNodes.forEach((n) => {
+          if (!updated && n.nodeType === Node.TEXT_NODE) {
+            n.textContent = next + " ";
+            updated = true;
+          }
+        });
+        if (!updated) btn.insertBefore(document.createTextNode(next + " "), btn.firstChild);
+      }
+
+      expRoot.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-exp-toggle]");
+        if (!btn) return;
+
+        const wrap = btn.closest(".exp-collapsible");
+        if (!wrap) return;
+
+        const collapsed = wrap.getAttribute("data-collapsed") !== "false";
+        const nextOpen = collapsed;
+
+        wrap.setAttribute("data-collapsed", nextOpen ? "false" : "true");
+        btn.setAttribute("aria-expanded", String(nextOpen));
+
+        const details = wrap.querySelector(".exp-details");
+        if (details) details.setAttribute("aria-hidden", String(!nextOpen));
+
+        setToggleLabel(btn, nextOpen);
+      });
+    })();
+
+    // -----------------------------
+    // EXPERIENCE — subtle stagger
+    // -----------------------------
+    const expItems = Array.from(document.querySelectorAll("#experience .timeline-item[data-animate]"));
+    expItems.forEach((el, idx) => {
+      el.style.transitionDelay = `${Math.min(idx * 80, 280)}ms`;
+    });
+
+    // -----------------------------
+    // EDUCATION TABS (safe, scoped) — no-op if you don't have the tab markup
+    // -----------------------------
+    (function educationTabs() {
+      const eduRoot = document.getElementById("education");
+      if (!eduRoot) return;
+
+      const tabs = eduRoot.querySelectorAll("[data-edu-tab]");
+      const panes = eduRoot.querySelectorAll("[data-edu-pane]");
+      if (!tabs.length || !panes.length) return;
+
+      const setActive = (key) => {
+        tabs.forEach((t) => {
+          const on = (t.getAttribute("data-edu-tab") === key);
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", String(on));
+        });
+
+        panes.forEach((p) => {
+          const on = (p.getAttribute("data-edu-pane") === key);
+          p.classList.toggle("is-active", on);
+        });
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const key = tab.getAttribute("data-edu-tab");
+          if (key) setActive(key);
+        });
+      });
+
+      setActive("csai");
+    })();
+
+    // -----------------------------
+    // Typewriter / rotating line (optional safe no-op)
     // -----------------------------
     const typeEl =
       document.querySelector("[data-type-rotate]") || document.getElementById("heroRotate");
@@ -265,10 +564,10 @@
         let i = 0;
         let deleting = false;
 
-        const TYPE_MS = 26;      // typing speed
-        const DELETE_MS = 18;    // backspace speed
-        const HOLD_MS = 950;     // pause at full phrase
-        const GAP_MS = 260;      // pause before typing next
+        const TYPE_MS = 26;
+        const DELETE_MS = 18;
+        const HOLD_MS = 950;
+        const GAP_MS = 260;
 
         const tick = () => {
           const text = phrases[p];
@@ -299,279 +598,3 @@
     }
   });
 })();
-
-// ===== Hero Typed Rotator (resume-accurate phrases) =====
-document.addEventListener("DOMContentLoaded", () => {
-  const el = document.getElementById("heroType");
-  if (!el) return;
-
-  // Keep these tightly aligned to your resume (max 5)
-  const phrases = [
-    "embedded systems software (Linux + C/C++)",
-    "computere vision pipelines",
-    "backend APIs + cloud (Python, CI/CD, DB)",
-    "MCU firmware for hardware"
-  ];
-
-  // Respect reduced motion preferences
-  const reduceMotion =
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  if (reduceMotion) {
-    el.textContent = phrases[0];
-    return;
-  }
-
-  let i = 0;          // phrase index
-  let j = 0;          // char index
-  let deleting = false;
-
-  const TYPE_SPEED = 26;       // smaller = faster typing
-  const DELETE_SPEED = 17;     // smaller = faster deleting
-  const HOLD_FULL = 1100;      // pause on full phrase
-  const HOLD_EMPTY = 250;      // pause before typing next
-
-  function tick() {
-    const current = phrases[i];
-
-    if (!deleting) {
-      j++;
-      el.textContent = current.slice(0, j);
-
-      if (j >= current.length) {
-        deleting = true;
-        setTimeout(tick, HOLD_FULL);
-        return;
-      }
-      setTimeout(tick, TYPE_SPEED);
-    } else {
-      j--;
-      el.textContent = current.slice(0, j);
-
-      if (j <= 0) {
-        deleting = false;
-        i = (i + 1) % phrases.length;
-        setTimeout(tick, HOLD_EMPTY);
-        return;
-      }
-      setTimeout(tick, DELETE_SPEED);
-    }
-  }
-
-  // Start
-  el.textContent = "";
-  tick();
-});
-
-
-/* =========================================================
-   Projects: Collapsed Preview + Expand/Collapse
-   UPDATED — replaces your old IIFE
-   Paste at END of main.js
-   ========================================================= */
-(function () {
-  const section = document.querySelector("[data-projects-section]");
-  if (!section) return;
-
-  const clip = section.querySelector("[data-projects-clip]");
-  const buttons = Array.from(section.querySelectorAll("[data-projects-expand-btn]"));
-  if (!clip || buttons.length === 0) return;
-
-  const setBtnState = (expanded) => {
-    buttons.forEach((btn) => {
-      const more = btn.getAttribute("data-more") || "Show all projects";
-      const less = btn.getAttribute("data-less") || "Show fewer projects";
-      const next = expanded ? less : more;
-
-      btn.setAttribute("aria-expanded", expanded ? "true" : "false");
-
-      const icon = btn.querySelector("i");
-      if (icon) icon.style.transform = expanded ? "rotate(180deg)" : "rotate(0deg)";
-
-      // Replace ONLY the first text node (preserve icon)
-      const textNode = Array.from(btn.childNodes).find((n) => n.nodeType === Node.TEXT_NODE);
-      if (textNode) {
-        textNode.nodeValue = next + " ";
-      } else {
-        btn.insertBefore(document.createTextNode(next + " "), btn.firstChild);
-      }
-    });
-  };
-
-  const firstRowBottom = (cards) => {
-    if (!cards.length) return 0;
-
-    const top0 = cards[0].offsetTop;
-    const rowCards = cards.filter((c) => c.offsetTop === top0);
-
-    const bottom = rowCards.reduce((m, c) => Math.max(m, c.offsetTop + c.offsetHeight), 0);
-    return bottom;
-  };
-
-  const syncHeights = () => {
-    const expandedH = clip.scrollHeight;
-    section.style.setProperty("--projects-expanded-h", expandedH + "px");
-
-    const cards = Array.from(section.querySelectorAll(".projects-grid > .project-card--tab"))
-      .filter((c) => c.offsetParent !== null); // visible cards only
-
-    if (!cards.length) {
-      section.style.setProperty("--projects-collapsed-h", Math.min(expandedH, 900) + "px");
-      return;
-    }
-
-    const rowBottom = firstRowBottom(cards);
-    const buffer = 140;
-    section.style.setProperty("--projects-collapsed-h", (rowBottom + buffer) + "px");
-  };
-
-  const expand = () => {
-    syncHeights();
-    section.classList.remove("projects-collapsed");
-    section.classList.add("projects-expanded");
-    setBtnState(true);
-
-    window.setTimeout(syncHeights, 450);
-  };
-
-  const collapse = () => {
-    syncHeights();
-    section.classList.remove("projects-expanded");
-    section.classList.add("projects-collapsed");
-    setBtnState(false);
-
-    const y = section.getBoundingClientRect().top + window.scrollY - 90;
-    window.scrollTo({ top: y, behavior: "smooth" });
-  };
-
-  // Initial state
-  section.classList.add("projects-collapsed");
-  section.classList.remove("projects-expanded");
-  setBtnState(false);
-
-  // Click handlers
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const isExpanded = section.classList.contains("projects-expanded");
-      if (isExpanded) collapse();
-      else expand();
-    });
-  });
-
-  // Keep heights correct on resize / orientation change
-  window.addEventListener("resize", () => syncHeights());
-
-  // When filters or details toggles change layout while expanded, resync
-  section.addEventListener("click", (e) => {
-    const t = e.target.closest("[data-project-toggle], .filter-btn");
-    if (!t) return;
-    if (!section.classList.contains("projects-expanded")) return;
-    window.setTimeout(syncHeights, 350);
-  });
-
-  // One more pass after images/fonts load
-  window.addEventListener("load", () => syncHeights());
-})();
-
-// EXPERIENCE: ensure company links open safely in a new tab
-document.querySelectorAll('#experience a[data-company-link]').forEach(a => {
-  if (!a.getAttribute('href') || a.getAttribute('href') === '#') return;
-  a.setAttribute('target', '_blank');
-  a.setAttribute('rel', 'noopener');
-});
-
-
-/* =========================================================
-   EDUCATION TABS (safe, scoped)
-   Paste at END of static/js/main.js
-   ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
-  const eduRoot = document.getElementById("education");
-  if (!eduRoot) return;
-
-  const tabs = eduRoot.querySelectorAll("[data-edu-tab]");
-  const panes = eduRoot.querySelectorAll("[data-edu-pane]");
-  if (!tabs.length || !panes.length) return;
-
-  const setActive = (key) => {
-    tabs.forEach((t) => {
-      const on = (t.getAttribute("data-edu-tab") === key);
-      t.classList.toggle("is-active", on);
-      t.setAttribute("aria-selected", String(on));
-    });
-
-    panes.forEach((p) => {
-      const on = (p.getAttribute("data-edu-pane") === key);
-      p.classList.toggle("is-active", on);
-    });
-  };
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const key = tab.getAttribute("data-edu-tab");
-      if (key) setActive(key);
-    });
-  });
-
-  // default
-  setActive("csai");
-});
-
-
-/* =========================================================
-   EXPERIENCE — Show more / Show less (projects-style)
-   Paste at VERY END of main.js
-   ========================================================= */
-(function () {
-  const expRoot = document.getElementById("experience");
-  if (!expRoot) return;
-
-  function setToggleLabel(btn, isOpen) {
-    const more = btn.getAttribute("data-more") || "Show more";
-    const less = btn.getAttribute("data-less") || "Show less";
-    const next = isOpen ? less : more;
-
-    // Update only the first text node (keep icon intact)
-    let updated = false;
-    btn.childNodes.forEach((n) => {
-      if (!updated && n.nodeType === Node.TEXT_NODE) {
-        n.textContent = next + " ";
-        updated = true;
-      }
-    });
-    if (!updated) btn.insertBefore(document.createTextNode(next + " "), btn.firstChild);
-  }
-
-  expRoot.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-exp-toggle]");
-    if (!btn) return;
-
-    const wrap = btn.closest(".exp-collapsible");
-    if (!wrap) return;
-
-    const collapsed = wrap.getAttribute("data-collapsed") !== "false";
-    const nextOpen = collapsed; // if collapsed -> open
-
-    wrap.setAttribute("data-collapsed", nextOpen ? "false" : "true");
-    btn.setAttribute("aria-expanded", String(nextOpen));
-
-    const details = wrap.querySelector(".exp-details");
-    if (details) details.setAttribute("aria-hidden", String(!nextOpen));
-
-    setToggleLabel(btn, nextOpen);
-  });
-})();
-
-/* =========================================================
-   EXPERIENCE — slightly stagger the scroll-in (slick “node added” feel)
-   Safe: only touches #experience items
-   Paste at VERY END of main.js
-   ========================================================= */
-document.addEventListener("DOMContentLoaded", () => {
-  const items = Array.from(document.querySelectorAll("#experience .timeline-item[data-animate]"));
-  items.forEach((el, idx) => {
-    // subtle stagger; cap so it never feels slow
-    el.style.transitionDelay = `${Math.min(idx * 80, 280)}ms`;
-  });
-});
